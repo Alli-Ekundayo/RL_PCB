@@ -30,6 +30,10 @@ ale_py>=0.9.0
 scope>=0.4.4
 portal>=3.5.0
 granular>=0.20.3
+embodied
+google-resumable-media
+tqdm
+
 
 # Environment compatibility pins for Kaggle/Colab
 # These versions are the "last good" ones before the NumPy 2.0 migration

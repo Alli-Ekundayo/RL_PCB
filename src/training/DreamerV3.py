@@ -20,7 +20,6 @@ sys.path.insert(0, dreamerv3_repo_path)
 
 import tracker
 import utils
-import torch
 
 # Import DreamerV3 dependencies
 try:
