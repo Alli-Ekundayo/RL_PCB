@@ -57,11 +57,11 @@ def generate_plot(data,
         label = f"{data['batch'][0]['algorithm']}"
 
     if plot == "reward":
-        f = sns.lineplot(data=df, ci="sd",
+        f = sns.lineplot(data=df, errorbar="sd",
                          x="episode_timesteps", y="accumulated_reward",
                          label=label)
     elif plot == "episode_length":
-        f = sns.lineplot(data=df, ci="sd",
+        f = sns.lineplot(data=df, errorbar="sd",
                          x="episode_timesteps", y="episode_length",
                          label=label)
     else:
@@ -71,6 +71,7 @@ def generate_plot(data,
     else:
         xlabels = ["{:}".format(int(x)) + "k" for x in f.get_xticks()/1_000]
 
+    f.set_xticks(f.get_xticks())
     f.set_xticklabels(xlabels)
 
 def generate_multi_agent_plot(batch,
@@ -213,7 +214,7 @@ def generate_multi_agent_plot_w_mean_std(batch,
     else:
         return
 
-    f = sns.lineplot(data=df, ci="sd",
+    f = sns.lineplot(data=df, errorbar="sd",
                      x="episode_number", y="episode_return",
                      label=label)
 
@@ -222,6 +223,7 @@ def generate_multi_agent_plot_w_mean_std(batch,
     else:
         xlabels = ["{:}".format(int(x)) + "k" for x in (f.get_xticks()*200)/1_000]
 
+    f.set_xticks(f.get_xticks())
     f.set_xticklabels(xlabels)
 
 def generate_dataset(batch, window: int = -1, verbose=False):
