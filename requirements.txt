@@ -15,7 +15,6 @@ cffi
 cryptography<44.0.0
 
 # DreamerV3 and JAX Ecosystem
-# We pin these to ensure compatibility with each other
 jax[cuda12]>=0.4.33
 flax>=0.8.0
 optax>=0.2.0
@@ -33,9 +32,9 @@ portal>=3.5.0
 granular>=0.20.3
 
 # Environment compatibility pins for Kaggle/Colab
-# These avoid breaking the pre-installed cloud libraries
-numpy>=1.24.0,<2.0.0
-pandas>=1.5.0,<2.3.0
-protobuf>=3.20.2,<4.0.0
-matplotlib>=3.5.0,<3.9.0
-google-auth<2.48.0
+# These versions are the "last good" ones before the NumPy 2.0 migration
+numpy
+pandas
+protobuf
+matplotlib
+google-auth
