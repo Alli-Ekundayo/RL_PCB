@@ -494,13 +494,37 @@ class DreamerV3:
 
     def _train_step(self):
         """Perform one training step with DreamerV3."""
-        # Sample batch from replay buffer
         if len(self.replay_buffer) < self.batch_size:
             return 0.0, 0.0
 
-        # SequenceReplayBuffer returns a dict of sequences
+        # Sample batch from replay buffer
         batch = self.replay_buffer.sample(self.batch_size)
 
-        # For now, return dummy losses
-        # Full implementation would call self.agent.train(batch)
-        return 0.0, 0.0
+        # Map buffer keys to Agent keys
+        # Agent expects: vector, is_first, is_last, is_terminal, reward, action, stepid, consec
+        data = {
+            'vector': batch['states'],
+            'action': batch['actions'],
+            'reward': batch['rewards'],
+            'is_first': batch['is_first'],
+            'is_last': batch['is_last'],
+            'is_terminal': batch['dones'],  # dones in buffer are terminal flags
+            'stepid': np.zeros((self.batch_size, self.batch_length, 20), dtype=np.uint8),
+            'consec': np.tile(np.arange(self.batch_length), (self.batch_size, 1)).astype(np.int32),
+        }
+
+        # Initialize train carry if needed
+        if self.train_carry is None:
+            self.train_carry = self.agent.init_train(self.batch_size)
+
+        # Perform training step
+        self.train_carry, outs, metrics = self.agent.train(self.train_carry, data)
+
+        # Extract losses for tracking
+        policy_loss = metrics.get('loss/policy', 0.0)
+        value_loss = metrics.get('loss/value', 0.0)
+        
+        # We can also track world model losses if desired
+        # model_loss = metrics.get('loss/rew', 0.0) + metrics.get('loss/con', 0.0)
+        
+        return float(policy_loss), float(value_loss)
