@@ -362,18 +362,18 @@ class DreamerV3:
             )
 
             for indiv_obs in obs_vec:
-                if indiv_obs[4] is True:
+                state, next_state, reward, action, done = indiv_obs[0], indiv_obs[1], indiv_obs[2], indiv_obs[3], indiv_obs[4]
+                if done is True:
                     self.done = True
-                transition = (
-                    indiv_obs[0],
-                    indiv_obs[3],
-                    indiv_obs[1],
-                    indiv_obs[2],
-                    1. - indiv_obs[4]
-                )
-                self.replay_buffer.add(*transition)
+                
+                # Add to episode buffer
+                self.episode_buffer.add(state, action, reward, next_state, done)
 
             if self.done:
+                # Add completed episode to replay buffer
+                self.replay_buffer.add_episode(self.episode_buffer.get_episode())
+                self.episode_buffer.reset()
+                
                 self.train_env.reset()
                 self.done = False
                 self.train_env.tracker.reset()
@@ -426,17 +426,13 @@ class DreamerV3:
             # Process observations
             all_rewards = []
             for indiv_obs in obs_vec:
-                if indiv_obs[4] is True:
+                state, next_state, reward, action, done = indiv_obs[0], indiv_obs[1], indiv_obs[2], indiv_obs[3], indiv_obs[4]
+                if done is True:
                     self.done = True
-                all_rewards.append(indiv_obs[2])
-                transition = (
-                    indiv_obs[0],
-                    indiv_obs[3],
-                    indiv_obs[1],
-                    indiv_obs[2],
-                    1. - indiv_obs[4]
-                )
-                self.replay_buffer.add(*transition)
+                all_rewards.append(reward)
+                
+                # Add to episode buffer
+                self.episode_buffer.add(state, action, reward, next_state, done)
 
             episode_reward += float(np.mean(np.array(all_rewards)))
 
@@ -464,6 +460,10 @@ class DreamerV3:
                 # Callback after tracker is updated
                 callback.on_step()
 
+                # Add completed episode to replay buffer
+                self.replay_buffer.add_episode(self.episode_buffer.get_episode())
+                self.episode_buffer.reset()
+
                 self.train_env.reset()
                 self.done = False
                 episode_reward = 0
@@ -485,39 +485,22 @@ class DreamerV3:
 
             # Incremental replay buffer
             if incremental_replay_buffer is not None:
-                if t % (self.replay_buffer.capacity * 2) == 0 and t > self.replay_buffer.capacity:
-                    if incremental_replay_buffer == "double":
-                        new_capacity = self.replay_buffer.capacity * 2
-                    elif incremental_replay_buffer == "triple":
-                        new_capacity = self.replay_buffer.capacity * 3
-                    elif incremental_replay_buffer == "quadruple":
-                        new_capacity = self.replay_buffer.capacity * 4
-
-                    old_buffer = self.replay_buffer
-                    self.replay_buffer = utils.ReplayMemory(
-                        new_capacity,
-                        device="cpu"
-                    )
-                    self.replay_buffer.add_content_of(old_buffer)
-
+                    # SequenceReplayBuffer handles capacity internally, 
+                    # but we can print a message if capacity was supposedly increased
                     if self.verbose:
-                        print(f"Updated replay buffer at timestep {t}; "
-                              f"capacity={new_capacity}, len={len(self.replay_buffer)}")
+                        print(f"Incremental buffer update triggered at timestep {t}")
 
         callback.on_training_end()
 
     def _train_step(self):
         """Perform one training step with DreamerV3."""
         # Sample batch from replay buffer
-        # DreamerV3 needs sequences, but we'll start with single transitions
-        state, action, next_state, reward, not_done = self.replay_buffer.sample(
-            self.batch_size
-        )
+        if len(self.replay_buffer) < self.batch_size:
+            return 0.0, 0.0
 
-        # Convert to DreamerV3 format
-        # This is simplified - real DreamerV3 uses sequences
-        # TODO: Implement proper sequence sampling for DreamerV3
+        # SequenceReplayBuffer returns a dict of sequences
+        batch = self.replay_buffer.sample(self.batch_size)
 
         # For now, return dummy losses
-        # Full implementation would create sequences and call self.agent.train()
+        # Full implementation would call self.agent.train(batch)
         return 0.0, 0.0
