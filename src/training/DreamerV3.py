@@ -74,7 +74,7 @@ class DreamerV3:
 
         # Hyperparameters with DreamerV3-appropriate defaults
         self.lr = hyperparameters.get("learning_rate", 1e-4)  # Lower LR for DreamerV3
-        self.batch_size = hyperparameters.get("batch_size", 16)  # DreamerV3 uses smaller batches
+        self.train_batch_size = hyperparameters.get("batch_size", 16)
         self.batch_length = hyperparameters.get("batch_length", 64)  # Sequence length
         self.gamma = hyperparameters.get("gamma", 0.99)
 
@@ -90,10 +90,9 @@ class DreamerV3:
 
         # Initialize policy carry state (for stateful inference)
         self.policy_carry = None
-        self.batch_size = 1  # For single environment
-
-        # Initialize the policy carry
-        self._init_policy_carry()
+        
+        # Initialize the policy carry (inference batch size is 1)
+        self.policy_carry = self.agent.init_policy(1)
 
         # Replay buffer (DreamerV3-style with sequences)
         self.replay_buffer = utils.SequenceReplayBuffer(
@@ -124,7 +123,7 @@ class DreamerV3:
             print(f"DreamerV3 (JAX) initialized on {self.device_str}")
             print(f"  State dim: {self.state_dim}")
             print(f"  Action dim: {self.action_dim}")
-            print(f"  Batch size: {self.batch_size}")
+            print(f"  Train batch size: {self.train_batch_size}")
             print(f"  Batch length: {self.batch_length}")
 
     def _check_cuda(self):
@@ -141,7 +140,7 @@ class DreamerV3:
         config_dict = {
             'seed': 0,
             'logdir': '/tmp/dreamerv3',
-            'batch_size': self.batch_size,
+            'batch_size': self.train_batch_size,
             'batch_length': self.batch_length,
             'report_length': 32,
             'replay_context': 1,
@@ -274,12 +273,12 @@ class DreamerV3:
         return agent
 
     def _init_policy_carry(self):
-        """Initialize policy carry state."""
-        self.policy_carry = self.agent.init_policy(self.batch_size)
+        """Initialize policy carry state for a batch of 1."""
+        self.policy_carry = self.agent.init_policy(1)
 
     def _reset_policy_carry(self):
         """Reset policy carry for a new episode."""
-        self.policy_carry = self.agent.init_policy(self.batch_size)
+        self.policy_carry = self.agent.init_policy(1)
 
     def _convert_obs_to_dreamer(self, obs, is_first=False, is_last=False, reward=0.0):
         """Convert RL-PCB observation to DreamerV3 format."""
@@ -438,7 +437,7 @@ class DreamerV3:
 
             # Training - simplified version
             critic_loss, actor_loss = 0.0, 0.0
-            if t >= start_timesteps and len(self.replay_buffer) >= self.batch_size:
+            if t >= start_timesteps and len(self.replay_buffer) >= self.train_batch_size:
                 # TODO: Implement proper DreamerV3 sequence training
                 # For now, just update periodically
                 if t % 100 == 0:  # Train every 100 steps
@@ -494,11 +493,11 @@ class DreamerV3:
 
     def _train_step(self):
         """Perform one training step with DreamerV3."""
-        if len(self.replay_buffer) < self.batch_size:
+        if len(self.replay_buffer) < self.train_batch_size:
             return 0.0, 0.0
 
         # Sample batch from replay buffer
-        batch = self.replay_buffer.sample(self.batch_size)
+        batch = self.replay_buffer.sample(self.train_batch_size)
 
         # Map buffer keys to Agent keys
         # Agent expects: vector, is_first, is_last, is_terminal, reward, action, stepid, consec
@@ -509,13 +508,13 @@ class DreamerV3:
             'is_first': batch['is_first'],
             'is_last': batch['is_last'],
             'is_terminal': batch['dones'],  # dones in buffer are terminal flags
-            'stepid': np.zeros((self.batch_size, self.batch_length, 20), dtype=np.uint8),
-            'consec': np.tile(np.arange(self.batch_length), (self.batch_size, 1)).astype(np.int32),
+            'stepid': np.zeros((self.train_batch_size, self.batch_length, 20), dtype=np.uint8),
+            'consec': np.tile(np.arange(self.batch_length), (self.train_batch_size, 1)).astype(np.int32),
         }
 
         # Initialize train carry if needed
         if self.train_carry is None:
-            self.train_carry = self.agent.init_train(self.batch_size)
+            self.train_carry = self.agent.init_train(self.train_batch_size)
 
         # Perform training step
         self.train_carry, outs, metrics = self.agent.train(self.train_carry, data)
@@ -524,7 +523,8 @@ class DreamerV3:
         policy_loss = metrics.get('loss/policy', 0.0)
         value_loss = metrics.get('loss/value', 0.0)
         
-        # We can also track world model losses if desired
-        # model_loss = metrics.get('loss/rew', 0.0) + metrics.get('loss/con', 0.0)
+        # Track world model losses (reward and continuity)
+        model_loss = metrics.get('loss/rew', 0.0) + metrics.get('loss/con', 0.0)
         
-        return float(policy_loss), float(value_loss)
+        # Return policy loss and combined model/value loss as critic loss
+        return float(policy_loss), float(value_loss + model_loss)
