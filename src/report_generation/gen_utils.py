@@ -234,37 +234,47 @@ def generate_dataset(batch, window: int = -1, verbose=False):
     for b in batch:
         full_path = os.path.join(b["dir"], "training.log")
 
-        f = open(full_path, "rb")   # open file in read mode and binary
-
+        # Use utf-8-sig to handle potential BOM markers
+        f = open(full_path, "rb")
+        
         episode_num = []
         timesteps = []
         episode_length = []
         episode_reward = []
         read_data = False
+        hdr = ["episode_number", "timesteps", "episode_length", "accumulated_reward"] # Default fallback
 
         for line in f:
-            l = line.decode('utf-8').strip()
+            try:
+                l = line.decode('utf-8-sig').strip()
+            except UnicodeDecodeError:
+                continue
+
             if l == "data begin":
-                if verbose is True:
-                    print("Found tag: \"data begin\"")
                 read_data = True
                 continue
 
             if l == "data end":
-                if verbose is True:
-                    print("Found tag: \"data end\"")
                 read_data = False
                 continue
 
             if read_data:
                 fields = l.split(",")
-                if fields[0] == "episode_number":
-                    hdr = l.split(",")
+                if len(fields) < 4:
                     continue
-                episode_num.append(int(fields[0]))
-                timesteps.append(int(fields[1]))
-                episode_length.append(int(fields[2]))
-                episode_reward.append(np.float32(fields[3]))
+                
+                # Check for header (case-insensitive and flexible)
+                if "episode_number" in fields[0].lower():
+                    hdr = fields
+                    continue
+                
+                try:
+                    episode_num.append(int(fields[0]))
+                    timesteps.append(int(fields[1]))
+                    episode_length.append(int(fields[2]))
+                    episode_reward.append(np.float32(fields[3]))
+                except (ValueError, IndexError):
+                    continue
 
         f.close()
 
