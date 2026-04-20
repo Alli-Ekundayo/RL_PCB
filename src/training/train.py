@@ -82,7 +82,7 @@ def training_run(settings):
                            "augment_position": True,
                            "augment_orientation": True,
                            "agent_max_action": 1,
-                           "agent_expl_noise": hp.get("expl_noise", 0.1),
+                           "agent_expl_noise": hp["expl_noise"],
                            "debug": False,
                            "max_steps": 200,
                            "w": settings["w"],
@@ -165,3 +165,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
