@@ -97,10 +97,14 @@ class DreamerV3:
         self._init_policy_carry()
 
         # Replay buffer (DreamerV3-style with sequences)
-        self.replay_buffer = utils.ReplayMemory(
-            hyperparameters.get("buffer_size", 1_000_000),
-            device="cpu"  # Store on CPU, move to device during training
+        self.replay_buffer = utils.SequenceReplayBuffer(
+            capacity=hyperparameters.get("buffer_size", 1_000_000),
+            sequence_length=self.batch_length,
+            device="cpu"
         )
+
+        # Episode buffer for collecting transitions during rollout
+        self.episode_buffer = utils.EpisodeBuffer()
 
         # Metrics tracking
         self.trackr = tracker.tracker(100, rl_policy_type="DreamerV3")
@@ -113,6 +117,9 @@ class DreamerV3:
         self.train_carry = None
         self.should_train = False
         self.train_steps = 0
+
+        # Pre-allocate data structure for efficiency
+        self._data_buffer = None
 
         if verbose >= 1:
             print(f"DreamerV3 (JAX) initialized on {self.device_str}")
@@ -277,19 +284,21 @@ class DreamerV3:
 
     def _convert_obs_to_dreamer(self, obs, is_first=False, is_last=False, reward=0.0):
         """Convert RL-PCB observation to DreamerV3 format."""
+        # Add batch dimension (1,) to match expected shapes
         return {
-            'vector': np.asarray(obs, dtype=np.float32),
-            'is_first': np.array(is_first, dtype=bool),
-            'is_last': np.array(is_last, dtype=bool),
-            'is_terminal': np.array(is_last, dtype=bool),  # Terminal = episode end
-            'reward': np.array(reward, dtype=np.float32),
+            'vector': np.asarray(obs, dtype=np.float32).reshape(1, -1),  # [1, state_dim]
+            'is_first': np.array([is_first], dtype=bool),  # [1]
+            'is_last': np.array([is_last], dtype=bool),  # [1]
+            'is_terminal': np.array([is_last], dtype=bool),  # [1] - Terminal = episode end
+            'reward': np.array([reward], dtype=np.float32),  # [1]
         }
 
     def _convert_action_from_dreamer(self, action_dict):
         """Convert DreamerV3 action to RL-PCB format."""
         action = action_dict['action']
-        # Scale to max_action
-        return action * self.max_action
+        # Take first batch element and scale to max_action
+        # action shape is [batch, action_dim]
+        return action[0] * self.max_action
 
     def _convert_action_to_dreamer(self, action):
         """Convert RL-PCB action to DreamerV3 format."""

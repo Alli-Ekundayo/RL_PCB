@@ -186,3 +186,219 @@ class ReplayMemory(object):
     def reset(self):
         self.memory = []
         self.position = 0
+
+
+class SequenceReplayBuffer:
+    """
+    A replay buffer for sequence-based RL algorithms like DreamerV3.
+
+    Stores full episodes and samples sequences of a specified length.
+    Each sequence maintains temporal continuity for training world models.
+
+    Args:
+        capacity (int): Maximum number of timesteps to store across all episodes.
+        sequence_length (int): Length of sequences to sample (batch_length).
+        device (str): Device to store tensors on.
+    """
+
+    def __init__(self, capacity, sequence_length, device='cpu'):
+        self.capacity = capacity
+        self.sequence_length = sequence_length
+        self.device = device
+
+        # Storage - list of episodes, each episode is a dict of sequences
+        self.episodes = []
+        self.total_timesteps = 0
+
+    def add_episode(self, episode):
+        """
+        Add a complete episode to the buffer.
+
+        Args:
+            episode (dict): Episode data containing:
+                - states: list/array of observations [T, state_dim]
+                - actions: list/array of actions [T, action_dim]
+                - rewards: list/array of rewards [T]
+                - dones: list/array of done flags [T]
+        """
+        # Convert episode to numpy arrays
+        episode_data = {
+            'states': np.array(episode['states'], dtype=np.float32),
+            'actions': np.array(episode['actions'], dtype=np.float32),
+            'rewards': np.array(episode['rewards'], dtype=np.float32),
+            'dones': np.array(episode['dones'], dtype=np.float32),
+        }
+
+        self.episodes.append(episode_data)
+        self.total_timesteps += len(episode['states'])
+
+        # Remove old episodes if over capacity
+        while self.total_timesteps > self.capacity and len(self.episodes) > 1:
+            removed = self.episodes.pop(0)
+            self.total_timesteps -= len(removed['states'])
+
+    def sample(self, batch_size):
+        """
+        Sample a batch of sequences from the replay buffer.
+
+        Args:
+            batch_size (int): Number of sequences to sample.
+
+        Returns:
+            dict: Batch of sequences containing:
+                - states: [batch_size, sequence_length, state_dim]
+                - actions: [batch_size, sequence_length, action_dim]
+                - next_states: [batch_size, sequence_length, state_dim]
+                - rewards: [batch_size, sequence_length]
+                - dones: [batch_size, sequence_length]
+                - is_first: [batch_size, sequence_length] - True for first step
+                - is_last: [batch_size, sequence_length] - True for last step
+        """
+        if len(self.episodes) == 0:
+            raise ValueError("Replay buffer is empty")
+
+        sequences = {
+            'states': [],
+            'actions': [],
+            'next_states': [],
+            'rewards': [],
+            'dones': [],
+            'is_first': [],
+            'is_last': [],
+        }
+
+        for _ in range(batch_size):
+            # Sample random episode weighted by length
+            episode_lengths = [len(ep['states']) for ep in self.episodes]
+            total_len = sum(episode_lengths)
+            episode_probs = [l / total_len for l in episode_lengths]
+            episode_idx = np.random.choice(len(self.episodes), p=episode_probs)
+            episode = self.episodes[episode_idx]
+
+            ep_len = len(episode['states'])
+
+            if ep_len < self.sequence_length:
+                # Episode shorter than sequence length - pad or take full episode
+                start_idx = 0
+                end_idx = ep_len
+
+                # Pad sequence
+                pad_length = self.sequence_length - ep_len
+                state_seq = np.concatenate([
+                    episode['states'],
+                    np.tile(episode['states'][-1:], (pad_length, 1))
+                ])
+                action_seq = np.concatenate([
+                    episode['actions'],
+                    np.tile(episode['actions'][-1:], (pad_length, 1))
+                ])
+                next_state_seq = np.concatenate([
+                    episode['next_states'] if 'next_states' in episode else episode['states'][1:],
+                    np.tile(episode['states'][-1:], (pad_length + 1, 1))
+                ])[:self.sequence_length]
+                reward_seq = np.concatenate([
+                    episode['rewards'],
+                    np.tile(episode['rewards'][-1:], (pad_length,))
+                ])
+                done_seq = np.concatenate([
+                    episode['dones'],
+                    np.ones(pad_length)  # Mark padded as done
+                ])
+            else:
+                # Sample random starting position
+                max_start = ep_len - self.sequence_length
+                start_idx = np.random.randint(0, max_start + 1)
+                end_idx = start_idx + self.sequence_length
+
+                state_seq = episode['states'][start_idx:end_idx]
+                action_seq = episode['actions'][start_idx:end_idx]
+                next_state_seq = episode['states'][start_idx + 1:end_idx + 1]
+                reward_seq = episode['rewards'][start_idx:end_idx]
+                done_seq = episode['dones'][start_idx:end_idx]
+
+            # Create is_first and is_last flags
+            is_first = np.zeros(self.sequence_length, dtype=bool)
+            is_last = np.zeros(self.sequence_length, dtype=bool)
+            is_first[0] = True
+            is_last[-1] = True
+
+            # Handle episode boundaries within sequence
+            if np.any(done_seq[:-1]):
+                # Find where episode ends
+                end_pos = np.where(done_seq[:-1])[0][0] + 1
+                is_last[:] = False
+                is_last[end_pos - 1] = True
+
+            sequences['states'].append(state_seq)
+            sequences['actions'].append(action_seq)
+            sequences['next_states'].append(next_state_seq)
+            sequences['rewards'].append(reward_seq)
+            sequences['dones'].append(done_seq)
+            sequences['is_first'].append(is_first)
+            sequences['is_last'].append(is_last)
+
+        # Stack to create batch
+        batch = {
+            'states': np.stack(sequences['states']),
+            'actions': np.stack(sequences['actions']),
+            'next_states': np.stack(sequences['next_states']),
+            'rewards': np.stack(sequences['rewards']),
+            'dones': np.stack(sequences['dones']),
+            'is_first': np.stack(sequences['is_first']),
+            'is_last': np.stack(sequences['is_last']),
+        }
+
+        return batch
+
+    def __len__(self):
+        """Return total timesteps stored."""
+        return self.total_timesteps
+
+    def reset(self):
+        """Clear the buffer."""
+        self.episodes = []
+        self.total_timesteps = 0
+
+
+class EpisodeBuffer:
+    """
+    A buffer for collecting a single episode during rollout.
+
+    This accumulates transitions and creates an episode dict for SequenceReplayBuffer.
+    """
+
+    def __init__(self):
+        self.reset()
+
+    def reset(self):
+        """Clear the episode buffer."""
+        self.states = []
+        self.actions = []
+        self.rewards = []
+        self.dones = []
+        self.next_states = []
+
+    def add(self, state, action, reward, next_state, done):
+        """Add a transition to the episode."""
+        self.states.append(state)
+        self.actions.append(action)
+        self.rewards.append(reward)
+        self.dones.append(done)
+        self.next_states.append(next_state)
+
+    def get_episode(self):
+        """
+        Get the collected episode as a dict.
+
+        Returns:
+            dict: Episode data ready for SequenceReplayBuffer.
+        """
+        return {
+            'states': np.array(self.states, dtype=np.float32),
+            'actions': np.array(self.actions, dtype=np.float32),
+            'rewards': np.array(self.rewards, dtype=np.float32),
+            'dones': np.array(self.dones, dtype=np.float32),
+        }
+
+    def __len__(self):
+        return len(self.states)
