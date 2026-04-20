@@ -44,11 +44,10 @@ def generate_plot(data,
         all_dfs[i] = all_dfs[i].truncate(after=length-1)
 
     # 4. create a new data frame with all datasets appended
-    for i in range(len(all_dfs)):
-        if i == 0:
-            df = all_dfs[i]
-        else:
-            df = df.append(all_dfs[i], ignore_index=True)
+    if all_dfs:
+        df = pd.concat(all_dfs, ignore_index=True)
+    else:
+        return # Handle empty data case
 
     #print(all_dfs)
     #print(df)
@@ -96,7 +95,7 @@ def generate_multi_agent_plot(batch,
         read_data = False
 
         for line in f:
-            l = str(line)[2:-5]
+            l = line.decode('utf-8').strip()
             if l == "data begin":
                 if verbose is True:
                     print("Found tag: \"data begin\"")
@@ -162,7 +161,7 @@ def generate_multi_agent_plot_w_mean_std(batch,
         read_data = False
 
         for line in f:
-            l = str(line)[2:-5]
+            l = line.decode('utf-8').strip()
             if l == "data begin":
                 if verbose is True:
                     print("Found tag: \"data begin\"")
@@ -209,11 +208,10 @@ def generate_multi_agent_plot_w_mean_std(batch,
         all_dfs[i] = all_dfs[i].truncate(after=length-1)
 
     # 4. create a new data frame with all datasets appended
-    for i in range(len(all_dfs)):
-        if i == 0:
-            df = all_dfs[i]
-        else:
-            df = df.append(all_dfs[i], ignore_index=True)
+    if all_dfs:
+        df = pd.concat(all_dfs, ignore_index=True)
+    else:
+        return
 
     f = sns.lineplot(data=df, ci="sd",
                      x="episode_number", y="episode_return",
@@ -245,7 +243,7 @@ def generate_dataset(batch, window: int = -1, verbose=False):
         read_data = False
 
         for line in f:
-            l = str(line)[2:-5]
+            l = line.decode('utf-8').strip()
             if l == "data begin":
                 if verbose is True:
                     print("Found tag: \"data begin\"")
