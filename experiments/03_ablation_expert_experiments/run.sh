@@ -12,7 +12,7 @@ echo "RL_PCB repository root is ${RL_PCB}"
 
 mkdir -p work
 echo "Starting tensorboard ... "
-tensorboard --logdir ./work/ --host 0.0.0.0 &
+PYTHONWARNINGS="ignore:pkg_resources is deprecated as an API:UserWarning,ignore:html5lib's sanitizer is deprecated:DeprecationWarning" tensorboard --logdir ./work/ --host 0.0.0.0 &
 sleep 2
 
 cd ${RL_PCB}/src/training

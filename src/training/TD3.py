@@ -7,7 +7,7 @@ import torch.nn.functional as F
 import utils
 import tracker
 import time
-
+import os
 # Implementation of Twin Delayed Deep Deterministic Policy Gradients (TD3)
 # Paper: https://arxiv.org/abs/1802.09477
 
@@ -17,31 +17,20 @@ class Actor(nn.Module):
                  state_dim,
                  action_dim,
                  max_action,
-                 pi : list = [400, 300],
+                  pi : list = [400, 300],
                  activation_fn: str = "relu",
-                 device: str = "cuda"
+                 device: str = "cuda",
+                 intermediate_activations: bool = False
                  ):
 
         super(Actor, self).__init__()
         self.device = device
-        self.pi = nn.Sequential()
-        in_size = state_dim
-        for layer_sz in pi:
-            self.pi.append(nn.Linear(in_size, layer_sz))
-            in_size = layer_sz
-        self.pi.append(nn.Linear(in_size, action_dim))
+        self.activation_fn = activation_fn
+        self.pi = utils.create_mlp(state_dim, action_dim, pi, activation_fn, intermediate_activations)
         self.max_action = max_action
 
-        if activation_fn == "relu":
-            self.activation_fn = F.relu
-        elif activation_fn == "tanh":
-            self.activation_fn == nn.Tanh
-
     def forward(self, state):
-        x = state
-        for i in range(len(self.pi)-1):
-            x = self.activation_fn(self.pi[i](x))
-        return self.max_action * torch.tanh(self.pi[-1](x))
+        return self.max_action * torch.tanh(self.pi(state))
 
     def select_action(self, state):
         state = torch.FloatTensor(state.reshape(1, -1)).to(self.device)
@@ -52,55 +41,25 @@ class Critic(nn.Module):
                  state_dim,
                  action_dim,
                  qf : list = [400, 300],
-                 activation_fn: str = "relu"
+                 activation_fn: str = "relu",
+                 intermediate_activations: bool = False
                  ):
         super(Critic, self).__init__()
-
-        if activation_fn == "relu":
-            self.activation_fn = F.relu
-        elif activation_fn == "tanh":
-            self.activation_fn == nn.Tanh
+        self.activation_fn = activation_fn
 
         # Q1 architecture
-        self.qf1 = nn.Sequential()
-        in_size = state_dim + action_dim
-        for layer_sz in qf:
-            self.qf1.append(nn.Linear(in_size, layer_sz))
-            in_size = layer_sz
-        self.qf1.append(nn.Linear(in_size, 1))
+        self.qf1 = utils.create_mlp(state_dim + action_dim, 1, qf, activation_fn, intermediate_activations)
 
         # Q2 architecture
-        self.qf2 = nn.Sequential()
-        in_size = state_dim + action_dim
-        for layer_sz in qf:
-            self.qf2.append(nn.Linear(in_size, layer_sz))
-            in_size = layer_sz
-        self.qf2.append(nn.Linear(in_size, 1))
+        self.qf2 = utils.create_mlp(state_dim + action_dim, 1, qf, activation_fn, intermediate_activations)
 
     def forward(self, state, action):
         sa = torch.cat([state, action], 1)
-
-        q1 = sa
-        for i in range(len(self.qf1)-1):
-            q1 = self.activation_fn(self.qf1[i](q1))
-        q1 = self.qf1[-1](q1)
-
-        q2 = sa
-        for i in range(len(self.qf2)-1):
-            q2 = self.activation_fn(self.qf2[i](q2))
-        q2 = self.qf2[-1](q2)
-
-        return q1, q2
-
+        return self.qf1(sa), self.qf2(sa)
 
     def Q1(self, state, action):
         sa = torch.cat([state, action], 1)
-
-        q1 = sa
-        for i in range(len(self.qf1)-1):
-            q1 = self.activation_fn(self.qf1[i](q1))
-        q1 = self.qf1[-1](q1)
-        return q1
+        return self.qf1(sa)
 
 class TD3(object):
     def __init__(
@@ -112,7 +71,8 @@ class TD3(object):
         early_stopping:int = 100_000,
         state_dim:int = 23,  # used when a training environment is not supplied
         action_dim:int = 3,  # used when a training environment is not supplied
-        verbose: int = 0
+        verbose: int = 0,
+        intermediate_activations: bool = False
     ):
         self.device=device
         if device == "cuda":
@@ -133,7 +93,8 @@ class TD3(object):
                            action_dim, max_action,
                            hyperparameters["net_arch"]["pi"],
                            hyperparameters["activation_fn"],
-                           device=device).to(self.device)
+                           device=device,
+                           intermediate_activations=intermediate_activations).to(self.device)
         self.actor_target = copy.deepcopy(self.actor)
         self.actor_optimizer = torch.optim.Adam(self.actor.parameters(),
                                                 lr=hyperparameters["learning_rate"])
@@ -141,7 +102,8 @@ class TD3(object):
         self.critic = Critic(state_dim,
                              action_dim,
                              hyperparameters["net_arch"]["qf"],
-                             hyperparameters["activation_fn"]).to(self.device)
+                             hyperparameters["activation_fn"],
+                             intermediate_activations=intermediate_activations).to(self.device)
         self.critic_target = copy.deepcopy(self.critic)
         self.critic_optimizer = torch.optim.Adam(self.critic.parameters(),
                                                  lr=hyperparameters["learning_rate"])
@@ -228,6 +190,7 @@ class TD3(object):
         return critic_loss.cpu().detach().numpy(), None
 
     def save(self, filename):
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
         torch.save(self.critic.state_dict(), filename + "_critic")
         torch.save(self.critic_optimizer.state_dict(),
                    filename + "_critic_optimizer")
@@ -237,12 +200,12 @@ class TD3(object):
                    filename + "_actor_optimizer")
 
     def load(self, filename):
-        self.critic.load_state_dict(torch.load(filename + "_critic"))
-        self.critic_optimizer.load_state_dict(torch.load(filename + "_critic_optimizer"))
+        self.critic.load_state_dict(torch.load(filename + "_critic", weights_only=True))
+        self.critic_optimizer.load_state_dict(torch.load(filename + "_critic_optimizer", weights_only=True))
         self.critic_target = copy.deepcopy(self.critic)
 
-        self.actor.load_state_dict(torch.load(filename + "_actor"))
-        self.actor_optimizer.load_state_dict(torch.load(filename + "_actor_optimizer"))
+        self.actor.load_state_dict(torch.load(filename + "_actor", weights_only=True))
+        self.actor_optimizer.load_state_dict(torch.load(filename + "_actor_optimizer", weights_only=True))
         self.actor_target = copy.deepcopy(self.actor)
 
     def explore_for_expert_targets(self,

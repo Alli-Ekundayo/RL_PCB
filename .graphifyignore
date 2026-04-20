@@ -1,0 +1,13 @@
+# SWIG-generated wrappers (auto-generated noise)
+*_wrapper.cpp
+bin/SA_PCB/python_swig/PcbPlacer.py
+bin/SA_PCB/KicadParser/python_swig/PcbDB.py
+
+# Unused HPlacer utilities (dead code — never called from RL pipeline)
+bin/SA_PCB/others_unused
+
+# Build artifacts
+build
+
+# Virtual environment
+venv

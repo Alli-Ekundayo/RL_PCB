@@ -82,6 +82,11 @@ class log_and_eval_callback():
 
         self.eval_env = None
         self.writer = SummaryWriter(log_dir=self.save_path)
+        # Emit an initial scalar so TensorBoard dashboards are visible
+        # immediately, even before the first episode completes.
+        self.writer.add_scalar(tag="run/heartbeat", scalar_value=0.0,
+                       global_step=0)
+        self.writer.flush()
 
         self.settings = settings
         self.hyperparameters = hyperparameters
@@ -394,8 +399,13 @@ class log_and_eval_callback():
                                             random=False,
                                             deterministic=True,
                                             rl_model_type=self.rl_model_type)
-                else:
+                elif self.rl_model_type == "SAC":
                     obs_vec = eval_env.step(model=self.model.policy,
+                                            random=False,
+                                            deterministic=True,
+                                            rl_model_type=self.rl_model_type)
+                else:  # DreamerV3
+                    obs_vec = eval_env.step(model=self.model,
                                             random=False,
                                             deterministic=True,
                                             rl_model_type=self.rl_model_type)
@@ -612,19 +622,24 @@ class log_and_eval_callback():
 
         if model is not None:
             s += f"<strong>{settings['rl_model_type']} Model Architecture</strong><br>"
-            if settings["rl_model_type"] == "TD3":
-                s += str(model.actor).replace("\n","<br>")
-            else: # SAC
-                s += str(model.policy).replace("\n","<br>")
+            if settings["rl_model_type"] == "DreamerV3":
+                s += "DreamerV3 (JAX/Flax world-model agent)<br>"
+                s += f"Device: {getattr(model, 'device', 'N/A')}<br>"
+                s += f"Hyperparameters: {getattr(model, 'hyperparameters', {})}<br><br>"
+            else:
+                if settings["rl_model_type"] == "TD3":
+                    s += str(model.actor).replace("\n","<br>")
+                else: # SAC
+                    s += str(model.policy).replace("\n","<br>")
 
-            s += "<br><br>"
-            s += str(model.critic).replace("\n","<br>")
-            s += "<br><br>"
-            s += str(model.critic_target).replace("\n","<br>")
-            s += "<br><br>"
-            s += "Activation function : "
-            s += str(model.critic.activation_fn).replace("\n","<br>")
-            s += "<br><br>"
+                s += "<br><br>"
+                s += str(model.critic).replace("\n","<br>")
+                s += "<br><br>"
+                s += str(model.critic_target).replace("\n","<br>")
+                s += "<br><br>"
+                s += "Activation function : "
+                s += str(model.critic.activation_fn).replace("\n","<br>")
+                s += "<br><br>"
 
         s += "<strong>Dependency Information</strong><br>"
         s += pcb.build_info_as_string().replace("\n","<br>")[4:-4]

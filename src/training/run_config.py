@@ -9,6 +9,7 @@ Created on Sat Sep 10 11:57:27 2022
 import argparse
 import numpy as np
 from datetime import datetime
+import os
 import torch
 import pcb.pcb as pcb
 import graph.graph as graph
@@ -16,10 +17,10 @@ import graph.graph as graph
 def cmdline_args():
     parser = argparse.ArgumentParser(
         description="unified argument parser for pcb component training",
-        usage="<script-name> -p <pcb_file> --rl_model_type [TD3 | SAC]",
+        usage="<script-name> -p <pcb_file> --rl_model_type [TD3 | SAC | DreamerV3]",
         epilog="This text will be shown after the help")
 
-    # Policy name (TD3 os SAC)
+    # Policy name (TD3, SAC, or DreamerV3)
     parser.add_argument("--policy", default="TD3")
     # Sets Gym, PyTorch and Numpy seeds
     parser.add_argument("-s", "--seed", required=False, nargs="+",
@@ -126,7 +127,9 @@ def cmdline_args():
     settings["runs"] = args.runs
     settings["auto_seed"] = args.auto_seed
     settings["workers"] = args.workers
-    settings["run_name"] = datetime.now().strftime("%s")
+    # Use microseconds + PID to avoid collisions across concurrently launched
+    # training processes while preserving the historical "run_run_algo" format.
+    settings["run_name"] = f"{datetime.now().strftime('%s%f')}{os.getpid()}"
     settings["verbose"] = args.verbose
 
     settings["evaluate_every"] = args.evaluate_every
@@ -155,7 +158,7 @@ def configure_seed(args):
         args.seed = []
         rng = np.random.default_rng(seed=int(datetime.now().strftime("%s")))
         for _ in range(args.runs):
-            args.seed.append(np.int0(rng.uniform(low=0,high=np.power(2,32)-1)))
+            args.seed.append(int(rng.uniform(low=0,high=np.power(2,32)-1)))
     else:
         # seed value is not provided or not provided correctly
         if (args.seed is None) or (len(args.seed) != args.runs):
@@ -164,7 +167,7 @@ def configure_seed(args):
             args.seed = []
             for _ in range(args.runs):
                 args.seed.append(
-                    np.int0(rng.uniform(low=0,high=(np.power(2,32)-1)))
+                    int(rng.uniform(low=0,high=(np.power(2,32)-1)))
                     )
 
 def write_desc_log(full_fn: str, settings: dict,
@@ -182,20 +185,25 @@ def write_desc_log(full_fn: str, settings: dict,
 
     if model is not None:
         f.write(f"\n================== {settings['rl_model_type']} Model Architecture ==================\r\n")
-        f.write("Actor\n")
-        if settings["rl_model_type"] == "TD3":
-            f.write(str(model.actor))
-        else: # SAC
-            f.write(str(model.policy))
-        f.write("\n\n")
-        f.write("Critic\n")
-        f.write(str(model.critic))
-        f.write("\n\n")
-        f.write("Critic target\n")
-        f.write(str(model.critic_target))
-        f.write("\n\n")
-        f.write(f"Activation function : {str(model.critic.activation_fn)}")
-        f.write("\n\n")
+        if settings["rl_model_type"] == "DreamerV3":
+            f.write("DreamerV3 (JAX/Flax world-model agent)\n")
+            f.write(f"Device: {getattr(model, 'device', 'N/A')}\n")
+            f.write(f"Hyperparameters: {getattr(model, 'hyperparameters', {})}\n\n")
+        else:
+            f.write("Actor\n")
+            if settings["rl_model_type"] == "TD3":
+                f.write(str(model.actor))
+            else: # SAC
+                f.write(str(model.policy))
+            f.write("\n\n")
+            f.write("Critic\n")
+            f.write(str(model.critic))
+            f.write("\n\n")
+            f.write("Critic target\n")
+            f.write(str(model.critic_target))
+            f.write("\n\n")
+            f.write(f"Activation function : {str(model.critic.activation_fn)}")
+            f.write("\n\n")
 
     f.write("\n================== Dependency Information ==================\r\n")
     # Strip leading and trailing newline ('\n') characters.

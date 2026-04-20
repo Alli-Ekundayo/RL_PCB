@@ -432,14 +432,14 @@ def get_los_feature_vector(n, nn, eoi, b, clamp_at_zero=True, padding=None):
 
                 angle = 2 * np.pi - angle
 
-                x = np.int0(np.ceil(current_node_size[0] / pcbDraw_resolution()))
-                y = np.int0(np.ceil(current_node_size[1] / pcbDraw_resolution()))
+                x = int(np.ceil(current_node_size[0] / pcbDraw_resolution()))
+                y = int(np.ceil(current_node_size[1] / pcbDraw_resolution()))
                 m = distance_from_rectangle_center_to_edge((x,y),
                                                            angle-deg2rad(current_node_orientation),
                                                            degrees=False)
 
-                box_edge_coords.append((np.int0(scaled_current_node_pos[0] + m*np.cos(angle)),
-                                  np.int0(scaled_current_node_pos[1] - m*np.sin(angle))))
+                box_edge_coords.append((int(scaled_current_node_pos[0] + m*np.cos(angle)),
+                                  int(scaled_current_node_pos[1] - m*np.sin(angle))))
 
             edge_to_intersection_dist = d - m
         else:

@@ -162,8 +162,11 @@ if __name__ == "__main__":
                                 bottomMargin = 1*inch, pagesize=A4)
 
     # TrueType fonts work in Unicode/UTF8 and are not limited to 256 characters.
-    pdfmetrics.registerFont(TTFont("Verdana", "verdana.ttf"))
-    pdfmetrics.registerFont(TTFont("Vera", "Vera.ttf"))
+    # Use matplotlib's bundled DejaVuSans font which is always available
+    import matplotlib
+    font_path = os.path.join(matplotlib.get_data_path(), "fonts", "ttf", "DejaVuSans.ttf")
+    pdfmetrics.registerFont(TTFont("Verdana", font_path))
+    pdfmetrics.registerFont(TTFont("Vera", font_path))
 
     styles = getSampleStyleSheet()
     style = ParagraphStyle("yourtitle",
@@ -231,6 +234,9 @@ if __name__ == "__main__":
 
                 all_recs = []
                 for directory in args.dirs:
+                    if not os.path.exists(directory):
+                        print(f"Warning: Directory {directory} does not exist. Skipping.")
+                        continue
                     for fd in os.listdir(directory):
                         path = os.path.join(directory,fd)
                         if os.path.isdir(path):
@@ -247,6 +253,7 @@ if __name__ == "__main__":
                     file_to_open = os.path.join(
                         all_recs[i]["dir"],
                         all_recs[i]["run_name"] + "_desc.log")
+                    training_log_file = os.path.join(all_recs[i]["dir"], "training.log")
                     try:
                         with open(file_to_open, "r", encoding="utf-8") as file:
                             for line in file:
@@ -258,9 +265,13 @@ if __name__ == "__main__":
                                     all_recs[i]["max_steps"] = int(line_fields[2])
                         file.close()
 
-                    except:
+                        if not os.path.isfile(training_log_file):
+                            err_idx.append(i)
+                            print(f"Missing training log: {training_log_file}. Noting index to remove from list.")
+
+                    except Exception:
                         err_idx.append(i)
-                        print("Something went wrong when opening the file {file_to_open}... Noting index to remove from list.")
+                        print(f"Something went wrong when opening the file {file_to_open}... Noting index to remove from list.")
                 # err_idx is sorted in ascending order by default.
                 # Therefore we always have to subtract n from the next idx.
                 # n = iters-1
@@ -424,6 +435,9 @@ if __name__ == "__main__":
             for k,v in value.items():
                 all_recs = []
                 for directory in args.dirs:
+                    if not os.path.exists(directory):
+                        print(f"Warning: Directory {directory} does not exist. Skipping.")
+                        continue
                     for fd in os.listdir(directory):
                         path = os.path.join(directory,fd)
                         if os.path.isdir(path):
@@ -440,6 +454,7 @@ if __name__ == "__main__":
                     file_to_open = os.path.join(
                         all_recs[i]["dir"],
                         all_recs[i]["run_name"] + "_desc.log")
+                    training_log_file = os.path.join(all_recs[i]["dir"], "training.log")
                     try:
                         with open(file_to_open, "r", encoding="utf-8") as file:
                             for line in file:
@@ -452,7 +467,11 @@ if __name__ == "__main__":
                                     all_recs[i]["max_steps"] = int(line_fields[2])
                         file.close()
 
-                    except:
+                        if not os.path.isfile(training_log_file):
+                            err_idx.append(i)
+                            print(f"Missing training log: {training_log_file}. Noting index to remove from list.")
+
+                    except Exception:
                         err_idx.append(i)
                         print(f"Something went wrong when opening the file {file_to_open}... Noting index to remove from list.")
                 # err_idx is sorted in ascending order by default.

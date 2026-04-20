@@ -11,7 +11,7 @@ Supported models:
 
 Module Functions:
     - td3_model_setup(train_env, hyperparameters, device="cpu",
-        early_stopping: int = 100_000, verbose: int = 0):
+        early_stopping: int = 100_000, verbose: int = 0, intermediate_activations: bool = False):
         Setup function for the TD3 model.
 
     - sac_model_setup(train_env, hyperparameters, device="cpu",
@@ -19,20 +19,22 @@ Module Functions:
         Setup function for the SAC model.
 
     - setup_model(model_type: str, train_env, hyperparameters,
-        device: str = "cpu", early_stopping: int = 100_000, verbose: int = 0):
+        device: str = "cpu", early_stopping: int = 100_000, verbose: int = 0, intermediate_activations: bool = False):
         Setup function to create a model based on the specified model type.
 """
 
 import TD3
 import SAC
+import DreamerV3
 
-supported_models = ["TD3", "SAC"]
+supported_models = ["TD3", "SAC", "DreamerV3"]
 
 def td3_model_setup(train_env,
                     hyperparameters,
                     device="cpu",
                     early_stopping:int = 100_000,
-                    verbose:int = 0):
+                    verbose:int = 0,
+                    intermediate_activations: bool = False):
     """
     Setup function for the TD3 model.
 
@@ -53,7 +55,8 @@ def td3_model_setup(train_env,
                     train_env=train_env,
                     device=device,
                     early_stopping=early_stopping,
-                    verbose=verbose)
+                    verbose=verbose,
+                    intermediate_activations=intermediate_activations)
     return model
 
 def sac_model_setup(train_env,
@@ -89,7 +92,8 @@ def setup_model( model_type: str,
                 hyperparameters,
                 device:str = "cpu",
                 early_stopping:int = 100_000,
-                verbose:int = 0 ):
+                verbose:int = 0,
+                intermediate_activations: bool = False ):
     """
     Setup function to create a model based on the specified model type.
 
@@ -104,7 +108,7 @@ def setup_model( model_type: str,
             2: detailed output) (default: 0).
 
     Returns:
-        TD3 or SAC: The initialized model based on the specified model type.
+        TD3, SAC, or DreamerV3: The initialized model based on the specified model type.
 
     """
     if model_type == "TD3":
@@ -112,13 +116,21 @@ def setup_model( model_type: str,
                                 hyperparameters=hyperparameters,
                                 device=device,
                                 early_stopping=early_stopping,
-                                verbose=verbose)
+                                verbose=verbose,
+                                intermediate_activations=intermediate_activations)
     elif model_type == "SAC":
         model = sac_model_setup(train_env=train_env,
                                 hyperparameters=hyperparameters,
                                 device=device,
                                 early_stopping=early_stopping,
                                 verbose=verbose)
+    elif model_type == "DreamerV3":
+        model = DreamerV3.DreamerV3(max_action=1.0,
+                                    hyperparameters=hyperparameters,
+                                    train_env=train_env,
+                                    device=device,
+                                    early_stopping=early_stopping,
+                                    verbose=verbose)
     else:
         print(f"{model_type} is not a supported model.\
               Please select from {supported_models}")

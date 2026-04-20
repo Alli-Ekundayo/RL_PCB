@@ -71,7 +71,7 @@ def draw_board_from_board_and_graph(b,
         sz_y = float(size[1]) / r
         # convert the center, size and orientation to rectange points
         box = cv2.boxPoints(((xc,yc), (sz_x,sz_y), -orientation))
-        box = np.int0(box)  # ensure that box point are integers
+        box = box.astype(int)  # ensure that box point are integers
         if n.get_isPlaced() == 1:
             cv2.drawContours(grid_comps[0],[box],0,(64),line_thickness)
         else:
@@ -152,7 +152,7 @@ def draw_board_from_board_and_graph_with_debug(b,
         sz_y = float(size[1]) / r
         # convert the center, size and orientation to rectange points
         box = cv2.boxPoints(((xc,yc), (sz_x,sz_y), -orientation))
-        box = np.int0(box)  # ensure that box point are integers
+        box = box.astype(int)  # ensure that box point are integers
         if n.get_isPlaced() == 1:
             cv2.drawContours(grid_comps[0],[box],0,(64),line_thickness)
         else:
@@ -246,7 +246,7 @@ def draw_board_from_board_and_graph_multi_agent(b, g,
         sz_y = float(size[1]) / r
         # convert the center, size and orientation to rectange points
         box = cv2.boxPoints(((xc,yc), (sz_x,sz_y), -orientation))
-        box = np.int0(box)  # ensure that box point are integers
+        box = box.astype(int)  # ensure that box point are integers
         if n.get_id() == node_id:
             cv2.drawContours(grid_comps[1],[box],0,(64),line_thickness)
         else:
@@ -306,7 +306,7 @@ def draw_comps_from_nodes_and_edges(n, nn, e, b, padding=None):
     sz_y = float(size[1]) / r
     # convert the center, size and orientation to rectange points
     box = cv2.boxPoints(((xc,yc), (sz_x,sz_y), -orientation))
-    box = np.int0(box)  # ensure that box point are integers
+    box = box.astype(int)  # ensure that box point are integers
     if n.get_isPlaced() == 1: # should always return False!
         cv2.drawContours(grid_comps[0],[box],0,(64),-1)
     else:
@@ -329,7 +329,7 @@ def draw_comps_from_nodes_and_edges(n, nn, e, b, padding=None):
         sz_y = float(size[1]) / r
         # convert the center, size and orientation to rectange points
         box = cv2.boxPoints(((xc,yc), (sz_x,sz_y), -orientation))
-        box = np.int0(box)  # ensure that box point are integers
+        box = box.astype(int)  # ensure that box point are integers
         if v.get_isPlaced() == 1:  # should always return True!
             cv2.drawContours(grid_comps[0],[box],0,(64),-1)
         else:
@@ -392,7 +392,7 @@ def draw_board_from_nodes_and_edges_multi_agent(n,
     sz_y = float(size[1]) / r
     # convert the center, size and orientation to rectange points
     box = cv2.boxPoints(((xc,yc), (sz_x,sz_y), -orientation))
-    box = np.int0(box)  # ensure that box point are integers
+    box = box.astype(int)  # ensure that box point are integers
     cv2.drawContours(grid_comps[1],[box],0,(64),-1)
 
     idx =2
@@ -413,7 +413,7 @@ def draw_board_from_nodes_and_edges_multi_agent(n,
         sz_y = float(size[1]) / r
         # convert the center, size and orientation to rectange points
         box = cv2.boxPoints(((xc,yc), (sz_x,sz_y), -orientation))
-        box = np.int0(box)  # ensure that box point are integers
+        box = box.astype(int)  # ensure that box point are integers
         cv2.drawContours(grid_comps[idx],[box],0,(64),-1)
         idx += 1
 
@@ -481,7 +481,7 @@ def draw_board_from_graph_multi_agent(g, node_id, bx, by, padding=None):
         sz_y = float(size[1]) / r
         # convert the center, size and orientation to rectange points
         box = cv2.boxPoints(((xc,yc), (sz_x,sz_y), -orientation))
-        box = np.int0(box)  # ensure that box point are integers
+        box = box.astype(int)  # ensure that box point are integers
         if current_node_id == node_id:
             cv2.drawContours(grid_comps[1],[box],0,(64),-1)
         else:
@@ -545,7 +545,7 @@ def draw_board_from_nodes_multi_agent(n, bx, by, padding=None):
         sz_y = float(size[1]) / r
         # convert the center, size and orientation to rectange points
         box = cv2.boxPoints(((xc,yc), (sz_x,sz_y), -orientation))
-        box = np.int0(box)  # ensure that box point are integers
+        box = box.astype(int)  # ensure that box point are integers
         cv2.drawContours(grid_comps[0],[box],0,(64),-1)
 
     if padding is not None:
@@ -714,12 +714,12 @@ def draw_los(pos_x,
     padded_los_segments = []
     segment_pixels = np.zeros(8)
     if padding is not None:
-        scaled_x = np.int0(pos_x / r) + int(padding/r)
-        scaled_y = np.int0(pos_y / r) + int(padding/r)
+        scaled_x = int(pos_x / r) + int(padding/r)
+        scaled_y = int(pos_y / r) + int(padding/r)
     else:
-        scaled_x = np.int0(pos_x / r)
-        scaled_y = np.int0(pos_y / r)
-    scaled_radius = np.int0(radius / r)
+        scaled_x = int(pos_x / r)
+        scaled_y = int(pos_y / r)
+    scaled_radius = int(radius / r)
     start = -22.5 - angle_offset
     stop = 22.5 - angle_offset
     for i in range(8):

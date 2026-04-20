@@ -1,12 +1,20 @@
 #!/bin/bash
 
+# Resolve paths relative to this script so the test can run without
+# requiring RL_PCB to be pre-exported in the shell.
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+TEST_DIR="${SCRIPT_DIR}"
+if [ -z "${RL_PCB}" ]; then
+    RL_PCB="$(cd -- "${SCRIPT_DIR}/../.." && pwd)"
+fi
+export TEST_DIR
+export RL_PCB
+
 # Place and route binaries
 KICAD_PARSER=${RL_PCB}/bin/kicadParser
 SA_PCB=${RL_PCB}/bin/sa
 PCB_ROUTER=${RL_PCB}/bin/pcb_router
 
-TEST_DIR=${PWD}
-export TEST_DIR=${TEST_DIR}
 echo "Script launched from ${TEST_DIR}"
 echo "RL_PCB repository root is ${RL_PCB}"
 

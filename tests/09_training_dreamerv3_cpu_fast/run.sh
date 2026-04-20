@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Resolve paths relative to this script so the test can run without
+# requiring RL_PCB to be pre-exported in the shell.
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+TEST_DIR="${SCRIPT_DIR}"
+if [ -z "${RL_PCB}" ]; then
+    RL_PCB="$(cd -- "${SCRIPT_DIR}/../.." && pwd)"
+fi
+export TEST_DIR
+export RL_PCB
+
+# Activate the project virtual environment so bare `python` resolves correctly.
+source "${RL_PCB}/venv/bin/activate"
+
+# Place and route binaries
+KICAD_PARSER=${RL_PCB}/bin/kicadParser
+SA_PCB=${RL_PCB}/bin/sa
+PCB_ROUTER=${RL_PCB}/bin/pcb_router
+
+echo "Script launched from ${TEST_DIR}"
+echo "RL_PCB repository root is ${RL_PCB}"
+
+# Check if binaries are compatible with current CPU
+if [ -e "$KICAD_PARSER" ]; then
+    echo "Checking binary compatibility..."
+    if ! $KICAD_PARSER --help &>/dev/null; then
+        echo "WARNING: Place and route binaries appear to be incompatible with this CPU."
+        echo "         They may have been compiled with CPU-specific optimizations not supported here."
+        echo "         To rebuild with compatible flags, run:"
+        echo ""
+        echo "         cd ${RL_PCB} && ./install_tools.sh --update_utility_binaries"
+        echo ""
+        echo "         Or manually rebuild in ${RL_PCB}/bin with CFLAGS='-O2 -march=x86-64-v3'"
+    fi
+fi
+
+mkdir -p work
+
+cd ${RL_PCB}/src/training
+./scheduler.sh --run_config ${TEST_DIR}/run_config.txt --logfile $TEST_DIR/scheduler.log --instances 4 --yes 
+cd ${TEST_DIR}
+
+python report_config.py 
+
+cd ${RL_PCB}/src/report_generation
+python generate_experiment_report.py --dir ${TEST_DIR}/work --hyperparameters ${TEST_DIR}/hyperparameters/hp_dreamerv3.json --report_config ${TEST_DIR}/report_config.json --output ${TEST_DIR}/experiment_report.pdf -y --tmp_dir ${TEST_DIR}/tmp
+cd ${TEST_DIR}
+
+# Check if all place and route binaries exist
+if [ -e "$KICAD_PARSER" ] && [ -e "$SA_PCB" ] && [ -e "$PCB_ROUTER" ]; then
+    echo "Starting evaluation ..."
+    cd ${RL_PCB}/src/evaluation_scripts
+    TD3_EVAL_TESTING_DIR=${TEST_DIR}/work/eval_testing_set
+    SAC_EVAL_TESTING_DIR=${TEST_DIR}/work/eval_testing_set
+
+    ./eval_just_do_it.sh -p ${RL_PCB}/dataset/base/evaluation.pcb -b ${RL_PCB}/dataset/base_raw --bin_dir ${RL_PCB}/bin --path_prefix "" -d ${TEST_DIR}/work -e training_dreamerv3_cpu_262 --report_type both,mean -o ${TD3_EVAL_TESTING_DIR} --runs 4 --max_steps 600 --report_type both,mean
+
+    cd ${TEST_DIR}
+else
+    echo "One or more place and route binaries expected at ${RL_PCB}/bin were not found."
+fi

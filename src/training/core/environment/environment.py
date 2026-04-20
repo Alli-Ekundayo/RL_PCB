@@ -4,6 +4,7 @@ from data_augmenter import dataAugmenter
 from pcb import pcb
 from graph import graph
 from core.agent.agent import agent as agent
+from core.agent.observation import flatten_observation
 from core.agent.parameters import parameters as agent_parameters
 from core.environment.tracker import tracker
 from pcbDraw import draw_board_from_board_and_graph_with_debug, draw_ratsnest_with_board
@@ -15,6 +16,7 @@ class environment:
     # It's purpose is to initialize the object.
     def __init__(self, parameters):
         self.parameters = parameters
+        self.env_steps = 0
 
         self.pv = pcb.vptr_pcbs()
         # Read pcb file
@@ -32,23 +34,7 @@ class environment:
         self.tracker = tracker()
 
         if self.parameters.use_dataAugmenter is True:
-            # The following configures the maximum translation. The following
-            # constraints / requirements apply:
-            #   1. There must be only one LOCKED component in the netlist.
-            #   2. The LOCKED component must be centered in the middle of the
-            #      board
-            nn = self.g.get_nodes()
-            c_sz = 0
-            b_sz = np.minimum(self.b.get_width(), self.b.get_height())
-            for i in range(len(nn)):
-                if nn[i].get_isPlaced() == 1:
-                    c_sz = np.maximum(nn[i].get_size()[0], nn[i].get_size()[1])
-                    break
-
-            sz = (b_sz - c_sz) / 2.0
-
-            translation_limits = [0.66*sz, 0.66*sz]
-
+            translation_limits = self._compute_translation_limits()
             self.dA = dataAugmenter(
                 board_size=[self.b.get_width(), self.b.get_height()],
                 max_translation=translation_limits,
@@ -59,7 +45,42 @@ class environment:
 
         self.padding=4
 
+    def _compute_translation_limits(self):
+        """Compute dataAugmenter translation limits from board/component sizes.
+
+        Constraints:
+            1. There must be only one LOCKED component in the netlist.
+            2. The LOCKED component must be centered in the middle of the board.
+        """
+        nn = self.g.get_nodes()
+        c_sz = 0
+        b_sz = np.minimum(self.b.get_width(), self.b.get_height())
+        for i in range(len(nn)):
+            if nn[i].get_isPlaced() == 1:
+                c_sz = np.maximum(nn[i].get_size()[0], nn[i].get_size()[1])
+                break
+        sz = (b_sz - c_sz) / 2.0
+        return [0.66 * sz, 0.66 * sz]
+
+    def _render_debug_frame(self):
+        """Render debug visualization (component grids + ratsnest) and add to tracker."""
+        comp_grids = draw_board_from_board_and_graph_with_debug(
+            self.b, self.g, padding=self.padding)
+        ratsnest = None
+        for i in range(len(self.agents)):
+            frame = draw_ratsnest_with_board(
+                self.agents[i].parameters.node,
+                self.agents[i].parameters.neighbors,
+                self.agents[i].parameters.eoi,
+                self.b,
+                line_thickness=1,
+                padding=self.padding,
+                ignore_power=True)
+            ratsnest = frame if ratsnest is None else np.maximum(ratsnest, frame)
+        self.tracker.add(comp_grids=comp_grids, ratsnest=ratsnest)
+
     def reset(self):
+        self.env_steps = 0
         self.g.update_original_nodes_with_current_optimals()
         # sets p,g and b variables; idx=-1 => random!!; set to True for
         # multiple PCBs
@@ -67,23 +88,8 @@ class environment:
                                                    idx=self.parameters.idx)
 
         if self.parameters.use_dataAugmenter is True:
-            # The following configures the maximum translation. The following
-            # constraints / requirements apply:
-            #   1. There must be only one LOCKED component in the netlist.
-            #   2. The LOCKED component must be centered in the middle of the
-            #      board
-            nn = self.g.get_nodes()
-            c_sz = 0
-            b_sz = np.minimum(self.b.get_width(), self.b.get_height())
-            for i in range(len(nn)):
-                if nn[i].get_isPlaced() == 1:
-                    c_sz = np.maximum(nn[i].get_size()[0], nn[i].get_size()[1])
-                    break
-
-            sz = (b_sz - c_sz) / 2.0
-
             self.dA.board_size=[self.b.get_width(), self.b.get_height()]
-            self.dA.set_translation_limits([0.66*sz, 0.66*sz])
+            self.dA.set_translation_limits(self._compute_translation_limits())
             # self.optimals and index are not used.
             self.optimal_location = self.dA.augment_graph(grph=self.g, idx=0)
 
@@ -95,30 +101,7 @@ class environment:
             self.agents[i].reset()
 
         if self.parameters.debug:
-            comp_grids = draw_board_from_board_and_graph_with_debug(
-                self.b,
-                self.g,
-                padding=self.padding)
-            for i in range(len(self.agents)):
-                if i == 0:
-                    ratsnest = draw_ratsnest_with_board(
-                        self.agents[i].parameters.node,
-                        self.agents[i].parameters.neighbors,
-                        self.agents[i].parameters.eoi,
-                        self.b,
-                        line_thickness=1,
-                        padding=self.padding,
-                        ignore_power=True)
-                else:
-                    ratsnest = np.maximum(ratsnest,draw_ratsnest_with_board(self.agents[i].parameters.node,
-                                                                            self.agents[i].parameters.neighbors,
-                                                                            self.agents[i].parameters.eoi,
-                                                                            self.b,
-                                                                            line_thickness=1,
-                                                                            padding=self.padding,
-                                                                            ignore_power=True))
-
-            self.tracker.add(comp_grids=comp_grids,ratsnest=ratsnest)
+            self._render_debug_frame()
 
     def step(self,
              model,
@@ -142,8 +125,8 @@ class environment:
                 deterministic=deterministic,
                 rl_model_type=rl_model_type)
             # convert state_vector
-            _state = list(state["los"]) + list(state["ol"]) + state["dom"] + state["euc_dist"] + state["position"] + state["ortientation"]
-            _next_state = list(next_state["los"]) + list(next_state["ol"]) + next_state["dom"] + next_state["euc_dist"] + next_state["position"] + next_state["ortientation"]
+            _state = flatten_observation(state)
+            _next_state = flatten_observation(next_state)
             _next_state_info = next_state["info"]
             observation_vec.append(
                 [_state, _next_state, reward, action, done, _next_state_info])
@@ -166,31 +149,9 @@ class environment:
             if done is True:
                 break
 
-        if self.parameters.debug is True:
-            comp_grids = draw_board_from_board_and_graph_with_debug(
-                self.b,
-                self.g,
-                padding=self.padding)
-            for i in range(len(self.agents)):
-                if i == 0:
-                    ratsnest = draw_ratsnest_with_board(
-                        self.agents[i].parameters.node,
-                        self.agents[i].parameters.neighbors,
-                        self.agents[i].parameters.eoi,
-                        self.b,
-                        line_thickness=1,
-                        padding=self.padding,
-                        ignore_power=True)
-                else:
-                    ratsnest = np.maximum(ratsnest, draw_ratsnest_with_board(self.agents[i].parameters.node,
-                                                                             self.agents[i].parameters.neighbors,
-                                                                             self.agents[i].parameters.eoi,
-                                                                             self.b,
-                                                                             line_thickness=1,
-                                                                             padding=self.padding,
-                                                                             ignore_power=True))
-
-            self.tracker.add(comp_grids=comp_grids,ratsnest=ratsnest)
+        self.env_steps += 1
+        if self.parameters.debug is True and (self.env_steps % 10 == 0 or done is True):
+            self._render_debug_frame()
 
         self.tracker.add_metrics(step_metrics)
         return observation_vec
@@ -210,22 +171,30 @@ class environment:
         self.g.set_component_origin_to_zero(self.b)
 
         nn = self.g.get_nodes()
+
+        # Pre-build edge index: O(E) once instead of O(N*E) per reset
+        ee = self.g.get_edges()
+        edge_index = {}  # node_id -> [(edge, net_id), ...]
+        for e in ee:
+            for inst_idx in (0, 1):
+                nid = e.get_instance_id(inst_idx)
+                edge_index.setdefault(nid, []).append((e, e.get_net_id()))
+
         for i in range(len(nn)):
             if nn[i].get_isPlaced() == 0:
                 node_id = nn[i].get_id()
-                nets = []
 
                 neighbor_ids = self.g.get_neighbor_node_ids(node_id)
                 neighbors = []
                 for n_id in neighbor_ids:
                     neighbors.append(self.g.get_node_by_id(n_id))
 
-                ee = self.g.get_edges()
+                # O(1) lookup per node via pre-built edge index
                 eoi = []
-                for e in ee:
-                    if e.get_instance_id(0) == node_id or e.get_instance_id(1) == node_id:
-                        eoi.append(e)
-                        nets.append(e.get_net_id())
+                nets = []
+                for e, net_id in edge_index.get(node_id, []):
+                    eoi.append(e)
+                    nets.append(net_id)
 
                 if init:
                     agent_params = agent_parameters(

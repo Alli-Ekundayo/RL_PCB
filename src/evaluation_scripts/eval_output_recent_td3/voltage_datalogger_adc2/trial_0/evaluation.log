@@ -1,0 +1,1285 @@
+timestamp=2026-04-17 16:05:02:197947
+parameters begin
+	training_pcb -> None
+	evaluation_pcb -> None
+	pcb_file -> /home/alli-ekundayo/Projects/RL_PCB/dataset/base/evaluation.pcb
+	net -> 
+	use_dataAugmenter -> True
+	augment_position -> True
+	augment_orientation -> True
+	agent_max_action -> 1
+	agent_expl_noise -> 0.1
+	debug -> True
+	max_steps -> 600
+	n -> 2.0
+	m -> 2.0
+	p -> 6.0
+	seed -> 2173385197
+	ignore_power -> True
+	log_dir -> None
+	idx -> 1
+	shuffle_idxs -> False
+parameters end
+run=0/0 @ episode_step=1 : Zero overlap best hpwl : hpwl=35.0797, overlap=0.0
+all_ol=[np.float64(0.0), np.float64(0.0)]
+run=0/0 @ episode_step=1 : 10% overlap best hpwl : hpwl=35.0797, overlap=0.0
+all_ol=[np.float64(0.0), np.float64(0.0)]
+run=0/0 @ episode_step=1 : 20% overlap best hpwl : hpwl=35.0797, overlap=0.0
+all_ol=[np.float64(0.0), np.float64(0.0)]
+run=0/0 @ episode_step=287 : 10% overlap best hpwl : hpwl=35.0768, overlap=1.328
+all_ol=[np.float64(5.227655986509274), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=287 : 20% overlap best hpwl : hpwl=35.0768, overlap=1.328
+all_ol=[np.float64(5.227655986509274), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=288 : 10% overlap best hpwl : hpwl=35.073, overlap=1.328
+all_ol=[np.float64(5.227655986509274), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=288 : 20% overlap best hpwl : hpwl=35.073, overlap=1.328
+all_ol=[np.float64(5.227655986509274), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=289 : 10% overlap best hpwl : hpwl=35.0691, overlap=1.328
+all_ol=[np.float64(5.227655986509274), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=289 : 20% overlap best hpwl : hpwl=35.0691, overlap=1.328
+all_ol=[np.float64(5.227655986509274), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=290 : 10% overlap best hpwl : hpwl=35.0653, overlap=1.328
+all_ol=[np.float64(5.227655986509274), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=290 : 20% overlap best hpwl : hpwl=35.0653, overlap=1.328
+all_ol=[np.float64(5.227655986509274), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=291 : 10% overlap best hpwl : hpwl=35.0615, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=291 : 20% overlap best hpwl : hpwl=35.0615, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=292 : 10% overlap best hpwl : hpwl=35.0576, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=292 : 20% overlap best hpwl : hpwl=35.0576, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=293 : 10% overlap best hpwl : hpwl=35.0538, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=293 : 20% overlap best hpwl : hpwl=35.0538, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=294 : 10% overlap best hpwl : hpwl=35.05, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=294 : 20% overlap best hpwl : hpwl=35.05, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=295 : 10% overlap best hpwl : hpwl=35.0461, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=295 : 20% overlap best hpwl : hpwl=35.0461, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=296 : 10% overlap best hpwl : hpwl=35.0423, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=296 : 20% overlap best hpwl : hpwl=35.0423, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=297 : 10% overlap best hpwl : hpwl=35.0385, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=297 : 20% overlap best hpwl : hpwl=35.0385, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=298 : 10% overlap best hpwl : hpwl=35.0348, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=298 : 20% overlap best hpwl : hpwl=35.0348, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=299 : 10% overlap best hpwl : hpwl=35.031, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=299 : 20% overlap best hpwl : hpwl=35.031, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=300 : 10% overlap best hpwl : hpwl=35.0272, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=300 : 20% overlap best hpwl : hpwl=35.0272, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=301 : 10% overlap best hpwl : hpwl=35.0235, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=301 : 20% overlap best hpwl : hpwl=35.0235, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=302 : 10% overlap best hpwl : hpwl=35.0198, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=302 : 20% overlap best hpwl : hpwl=35.0198, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=303 : 10% overlap best hpwl : hpwl=35.0161, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=303 : 20% overlap best hpwl : hpwl=35.0161, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=304 : 10% overlap best hpwl : hpwl=35.0124, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=304 : 20% overlap best hpwl : hpwl=35.0124, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=305 : 10% overlap best hpwl : hpwl=35.0087, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=305 : 20% overlap best hpwl : hpwl=35.0087, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=306 : 10% overlap best hpwl : hpwl=35.005, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=306 : 20% overlap best hpwl : hpwl=35.005, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=307 : 10% overlap best hpwl : hpwl=35.0014, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=307 : 20% overlap best hpwl : hpwl=35.0014, overlap=1.3491
+all_ol=[np.float64(5.396290050590219), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=308 : 10% overlap best hpwl : hpwl=34.9977, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=308 : 20% overlap best hpwl : hpwl=34.9977, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=309 : 10% overlap best hpwl : hpwl=34.9941, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=309 : 20% overlap best hpwl : hpwl=34.9941, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=310 : 10% overlap best hpwl : hpwl=34.9905, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=310 : 20% overlap best hpwl : hpwl=34.9905, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=311 : 10% overlap best hpwl : hpwl=34.9868, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=311 : 20% overlap best hpwl : hpwl=34.9868, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=312 : 10% overlap best hpwl : hpwl=34.9832, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=312 : 20% overlap best hpwl : hpwl=34.9832, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=313 : 10% overlap best hpwl : hpwl=34.9796, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=313 : 20% overlap best hpwl : hpwl=34.9796, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=314 : 10% overlap best hpwl : hpwl=34.9761, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=314 : 20% overlap best hpwl : hpwl=34.9761, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=315 : 10% overlap best hpwl : hpwl=34.9725, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=315 : 20% overlap best hpwl : hpwl=34.9725, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=316 : 10% overlap best hpwl : hpwl=34.9689, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=316 : 20% overlap best hpwl : hpwl=34.9689, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=317 : 10% overlap best hpwl : hpwl=34.9654, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=317 : 20% overlap best hpwl : hpwl=34.9654, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=318 : 10% overlap best hpwl : hpwl=34.9619, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=318 : 20% overlap best hpwl : hpwl=34.9619, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=319 : 10% overlap best hpwl : hpwl=34.9584, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=319 : 20% overlap best hpwl : hpwl=34.9584, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=320 : 10% overlap best hpwl : hpwl=34.9549, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=320 : 20% overlap best hpwl : hpwl=34.9549, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=321 : 10% overlap best hpwl : hpwl=34.9514, overlap=0.7056
+all_ol=[np.float64(2.94659300184162), np.float64(2.698145025295109)]
+run=0/0 @ episode_step=321 : 20% overlap best hpwl : hpwl=34.9514, overlap=0.7056
+all_ol=[np.float64(2.94659300184162), np.float64(2.698145025295109)]
+run=0/0 @ episode_step=322 : 10% overlap best hpwl : hpwl=34.9484, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=322 : 20% overlap best hpwl : hpwl=34.9484, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=323 : 10% overlap best hpwl : hpwl=34.9449, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=323 : 20% overlap best hpwl : hpwl=34.9449, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=324 : 10% overlap best hpwl : hpwl=34.9415, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=324 : 20% overlap best hpwl : hpwl=34.9415, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=325 : 10% overlap best hpwl : hpwl=34.938, overlap=0.7056
+all_ol=[np.float64(2.94659300184162), np.float64(2.698145025295109)]
+run=0/0 @ episode_step=325 : 20% overlap best hpwl : hpwl=34.938, overlap=0.7056
+all_ol=[np.float64(2.94659300184162), np.float64(2.698145025295109)]
+run=0/0 @ episode_step=326 : 10% overlap best hpwl : hpwl=34.9351, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=326 : 20% overlap best hpwl : hpwl=34.9351, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=327 : 10% overlap best hpwl : hpwl=34.9316, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=327 : 20% overlap best hpwl : hpwl=34.9316, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=328 : 10% overlap best hpwl : hpwl=34.9282, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=328 : 20% overlap best hpwl : hpwl=34.9282, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=329 : 10% overlap best hpwl : hpwl=34.9248, overlap=0.7056
+all_ol=[np.float64(2.94659300184162), np.float64(2.698145025295109)]
+run=0/0 @ episode_step=329 : 20% overlap best hpwl : hpwl=34.9248, overlap=0.7056
+all_ol=[np.float64(2.94659300184162), np.float64(2.698145025295109)]
+run=0/0 @ episode_step=330 : 10% overlap best hpwl : hpwl=34.9219, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=330 : 20% overlap best hpwl : hpwl=34.9219, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=331 : 10% overlap best hpwl : hpwl=34.9186, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=331 : 20% overlap best hpwl : hpwl=34.9186, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=332 : 10% overlap best hpwl : hpwl=34.9152, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=332 : 20% overlap best hpwl : hpwl=34.9152, overlap=1.3888
+all_ol=[np.float64(5.714285714285714), np.float64(5.396290050590219)]
+run=0/0 @ episode_step=333 : 10% overlap best hpwl : hpwl=34.9118, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=333 : 20% overlap best hpwl : hpwl=34.9118, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=334 : 10% overlap best hpwl : hpwl=34.9085, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=334 : 20% overlap best hpwl : hpwl=34.9085, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=335 : 10% overlap best hpwl : hpwl=34.9057, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=335 : 20% overlap best hpwl : hpwl=34.9057, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=336 : 10% overlap best hpwl : hpwl=34.9024, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=336 : 20% overlap best hpwl : hpwl=34.9024, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=337 : 10% overlap best hpwl : hpwl=34.8992, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=337 : 20% overlap best hpwl : hpwl=34.8992, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=338 : 10% overlap best hpwl : hpwl=34.8959, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=338 : 20% overlap best hpwl : hpwl=34.8959, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=339 : 10% overlap best hpwl : hpwl=34.8927, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=339 : 20% overlap best hpwl : hpwl=34.8927, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=340 : 10% overlap best hpwl : hpwl=34.8899, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=340 : 20% overlap best hpwl : hpwl=34.8899, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=341 : 10% overlap best hpwl : hpwl=34.8867, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=341 : 20% overlap best hpwl : hpwl=34.8867, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=342 : 10% overlap best hpwl : hpwl=34.8835, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=342 : 20% overlap best hpwl : hpwl=34.8835, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=343 : 10% overlap best hpwl : hpwl=34.8803, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=343 : 20% overlap best hpwl : hpwl=34.8803, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=344 : 10% overlap best hpwl : hpwl=34.8771, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=344 : 20% overlap best hpwl : hpwl=34.8771, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=345 : 10% overlap best hpwl : hpwl=34.874, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=345 : 20% overlap best hpwl : hpwl=34.874, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=346 : 10% overlap best hpwl : hpwl=34.8713, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=346 : 20% overlap best hpwl : hpwl=34.8713, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=347 : 10% overlap best hpwl : hpwl=34.8681, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=347 : 20% overlap best hpwl : hpwl=34.8681, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=348 : 10% overlap best hpwl : hpwl=34.865, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=348 : 20% overlap best hpwl : hpwl=34.865, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=349 : 10% overlap best hpwl : hpwl=34.8618, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=349 : 20% overlap best hpwl : hpwl=34.8618, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=350 : 10% overlap best hpwl : hpwl=34.8587, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=350 : 20% overlap best hpwl : hpwl=34.8587, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=351 : 10% overlap best hpwl : hpwl=34.8556, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=351 : 20% overlap best hpwl : hpwl=34.8556, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=352 : 10% overlap best hpwl : hpwl=34.8525, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=352 : 20% overlap best hpwl : hpwl=34.8525, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=353 : 10% overlap best hpwl : hpwl=34.8497, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=353 : 20% overlap best hpwl : hpwl=34.8497, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=354 : 10% overlap best hpwl : hpwl=34.8465, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=354 : 20% overlap best hpwl : hpwl=34.8465, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=355 : 10% overlap best hpwl : hpwl=34.8433, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=355 : 20% overlap best hpwl : hpwl=34.8433, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=356 : 10% overlap best hpwl : hpwl=34.8402, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=356 : 20% overlap best hpwl : hpwl=34.8402, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=357 : 10% overlap best hpwl : hpwl=34.837, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=357 : 20% overlap best hpwl : hpwl=34.837, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=358 : 10% overlap best hpwl : hpwl=34.8343, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=358 : 20% overlap best hpwl : hpwl=34.8343, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=359 : 10% overlap best hpwl : hpwl=34.8311, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=359 : 20% overlap best hpwl : hpwl=34.8311, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=360 : 10% overlap best hpwl : hpwl=34.828, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=360 : 20% overlap best hpwl : hpwl=34.828, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=361 : 10% overlap best hpwl : hpwl=34.8249, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=361 : 20% overlap best hpwl : hpwl=34.8249, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=362 : 10% overlap best hpwl : hpwl=34.8217, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=362 : 20% overlap best hpwl : hpwl=34.8217, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=363 : 10% overlap best hpwl : hpwl=34.8186, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=363 : 20% overlap best hpwl : hpwl=34.8186, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=364 : 10% overlap best hpwl : hpwl=34.816, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=364 : 20% overlap best hpwl : hpwl=34.816, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=365 : 10% overlap best hpwl : hpwl=34.8129, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=365 : 20% overlap best hpwl : hpwl=34.8129, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=366 : 10% overlap best hpwl : hpwl=34.8098, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=366 : 20% overlap best hpwl : hpwl=34.8098, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=367 : 10% overlap best hpwl : hpwl=34.8067, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=367 : 20% overlap best hpwl : hpwl=34.8067, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=368 : 10% overlap best hpwl : hpwl=34.8037, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=368 : 20% overlap best hpwl : hpwl=34.8037, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=369 : 10% overlap best hpwl : hpwl=34.8006, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=369 : 20% overlap best hpwl : hpwl=34.8006, overlap=0.7279
+all_ol=[np.float64(2.9565217391304346), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=370 : 10% overlap best hpwl : hpwl=34.7981, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=370 : 20% overlap best hpwl : hpwl=34.7981, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=371 : 10% overlap best hpwl : hpwl=34.795, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=371 : 20% overlap best hpwl : hpwl=34.795, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=372 : 10% overlap best hpwl : hpwl=34.792, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=372 : 20% overlap best hpwl : hpwl=34.792, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=373 : 10% overlap best hpwl : hpwl=34.789, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=373 : 20% overlap best hpwl : hpwl=34.789, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=374 : 10% overlap best hpwl : hpwl=34.7859, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=374 : 20% overlap best hpwl : hpwl=34.7859, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=375 : 10% overlap best hpwl : hpwl=34.7829, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=375 : 20% overlap best hpwl : hpwl=34.7829, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=376 : 10% overlap best hpwl : hpwl=34.7799, overlap=0.7497
+all_ol=[np.float64(3.1307550644567215), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=376 : 20% overlap best hpwl : hpwl=34.7799, overlap=0.7497
+all_ol=[np.float64(3.1307550644567215), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=377 : 10% overlap best hpwl : hpwl=34.7774, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=377 : 20% overlap best hpwl : hpwl=34.7774, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=378 : 10% overlap best hpwl : hpwl=34.7744, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=378 : 20% overlap best hpwl : hpwl=34.7744, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=379 : 10% overlap best hpwl : hpwl=34.7714, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=379 : 20% overlap best hpwl : hpwl=34.7714, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=380 : 10% overlap best hpwl : hpwl=34.7684, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=380 : 20% overlap best hpwl : hpwl=34.7684, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=381 : 10% overlap best hpwl : hpwl=34.7655, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=381 : 20% overlap best hpwl : hpwl=34.7655, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=382 : 10% overlap best hpwl : hpwl=34.7625, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=382 : 20% overlap best hpwl : hpwl=34.7625, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=383 : 10% overlap best hpwl : hpwl=34.7596, overlap=0.7497
+all_ol=[np.float64(3.1307550644567215), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=383 : 20% overlap best hpwl : hpwl=34.7596, overlap=0.7497
+all_ol=[np.float64(3.1307550644567215), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=384 : 10% overlap best hpwl : hpwl=34.7571, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=384 : 20% overlap best hpwl : hpwl=34.7571, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=385 : 10% overlap best hpwl : hpwl=34.7542, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=385 : 20% overlap best hpwl : hpwl=34.7542, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=386 : 10% overlap best hpwl : hpwl=34.7513, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=386 : 20% overlap best hpwl : hpwl=34.7513, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=387 : 10% overlap best hpwl : hpwl=34.7484, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=387 : 20% overlap best hpwl : hpwl=34.7484, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=388 : 10% overlap best hpwl : hpwl=34.7455, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=388 : 20% overlap best hpwl : hpwl=34.7455, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=389 : 10% overlap best hpwl : hpwl=34.7426, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=389 : 20% overlap best hpwl : hpwl=34.7426, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=390 : 10% overlap best hpwl : hpwl=34.7397, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=390 : 20% overlap best hpwl : hpwl=34.7397, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=391 : 10% overlap best hpwl : hpwl=34.7368, overlap=0.7497
+all_ol=[np.float64(3.1307550644567215), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=391 : 20% overlap best hpwl : hpwl=34.7368, overlap=0.7497
+all_ol=[np.float64(3.1307550644567215), np.float64(2.8667790893760534)]
+run=0/0 @ episode_step=392 : 10% overlap best hpwl : hpwl=34.7345, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=392 : 20% overlap best hpwl : hpwl=34.7345, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=393 : 10% overlap best hpwl : hpwl=34.7316, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=393 : 20% overlap best hpwl : hpwl=34.7316, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=394 : 10% overlap best hpwl : hpwl=34.7287, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=394 : 20% overlap best hpwl : hpwl=34.7287, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=395 : 10% overlap best hpwl : hpwl=34.7259, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=395 : 20% overlap best hpwl : hpwl=34.7259, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=396 : 10% overlap best hpwl : hpwl=34.7231, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=396 : 20% overlap best hpwl : hpwl=34.7231, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=397 : 10% overlap best hpwl : hpwl=34.7202, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=397 : 20% overlap best hpwl : hpwl=34.7202, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=398 : 10% overlap best hpwl : hpwl=34.7174, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=398 : 20% overlap best hpwl : hpwl=34.7174, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=399 : 10% overlap best hpwl : hpwl=34.7146, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=399 : 20% overlap best hpwl : hpwl=34.7146, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752107)]
+run=0/0 @ episode_step=400 : 10% overlap best hpwl : hpwl=34.7118, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=400 : 20% overlap best hpwl : hpwl=34.7118, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=401 : 10% overlap best hpwl : hpwl=34.709, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=401 : 20% overlap best hpwl : hpwl=34.709, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=402 : 10% overlap best hpwl : hpwl=34.7063, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=402 : 20% overlap best hpwl : hpwl=34.7063, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=403 : 10% overlap best hpwl : hpwl=34.7036, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=403 : 20% overlap best hpwl : hpwl=34.7036, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=404 : 10% overlap best hpwl : hpwl=34.7008, overlap=0.7707
+all_ol=[np.float64(3.130434782608696), np.float64(3.0354131534569984)]
+run=0/0 @ episode_step=404 : 20% overlap best hpwl : hpwl=34.7008, overlap=0.7707
+all_ol=[np.float64(3.130434782608696), np.float64(3.0354131534569984)]
+run=0/0 @ episode_step=405 : 10% overlap best hpwl : hpwl=34.6986, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=405 : 20% overlap best hpwl : hpwl=34.6986, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=406 : 10% overlap best hpwl : hpwl=34.6972, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=406 : 20% overlap best hpwl : hpwl=34.6972, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=407 : 10% overlap best hpwl : hpwl=34.6959, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=407 : 20% overlap best hpwl : hpwl=34.6959, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=408 : 10% overlap best hpwl : hpwl=34.6945, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=408 : 20% overlap best hpwl : hpwl=34.6945, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=409 : 10% overlap best hpwl : hpwl=34.6931, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=409 : 20% overlap best hpwl : hpwl=34.6931, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=410 : 10% overlap best hpwl : hpwl=34.6918, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=410 : 20% overlap best hpwl : hpwl=34.6918, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=411 : 10% overlap best hpwl : hpwl=34.6904, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=411 : 20% overlap best hpwl : hpwl=34.6904, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=412 : 10% overlap best hpwl : hpwl=34.6891, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=412 : 20% overlap best hpwl : hpwl=34.6891, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=413 : 10% overlap best hpwl : hpwl=34.6877, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=413 : 20% overlap best hpwl : hpwl=34.6877, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=414 : 10% overlap best hpwl : hpwl=34.6864, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=414 : 20% overlap best hpwl : hpwl=34.6864, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=415 : 10% overlap best hpwl : hpwl=34.685, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=415 : 20% overlap best hpwl : hpwl=34.685, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=416 : 10% overlap best hpwl : hpwl=34.6837, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=416 : 20% overlap best hpwl : hpwl=34.6837, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=417 : 10% overlap best hpwl : hpwl=34.6824, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=417 : 20% overlap best hpwl : hpwl=34.6824, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=418 : 10% overlap best hpwl : hpwl=34.6811, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=418 : 20% overlap best hpwl : hpwl=34.6811, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=419 : 10% overlap best hpwl : hpwl=34.6798, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=419 : 20% overlap best hpwl : hpwl=34.6798, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=420 : 10% overlap best hpwl : hpwl=34.6785, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=420 : 20% overlap best hpwl : hpwl=34.6785, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=421 : 10% overlap best hpwl : hpwl=34.6772, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=421 : 20% overlap best hpwl : hpwl=34.6772, overlap=1.5177
+all_ol=[np.float64(6.070826306913996), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=422 : 10% overlap best hpwl : hpwl=34.6759, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=422 : 20% overlap best hpwl : hpwl=34.6759, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=423 : 10% overlap best hpwl : hpwl=34.6745, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=423 : 20% overlap best hpwl : hpwl=34.6745, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=424 : 10% overlap best hpwl : hpwl=34.6731, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=424 : 20% overlap best hpwl : hpwl=34.6731, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=425 : 10% overlap best hpwl : hpwl=34.6717, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=425 : 20% overlap best hpwl : hpwl=34.6717, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=426 : 10% overlap best hpwl : hpwl=34.6704, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=426 : 20% overlap best hpwl : hpwl=34.6704, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=427 : 10% overlap best hpwl : hpwl=34.669, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=427 : 20% overlap best hpwl : hpwl=34.669, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=428 : 10% overlap best hpwl : hpwl=34.6677, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=428 : 20% overlap best hpwl : hpwl=34.6677, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=429 : 10% overlap best hpwl : hpwl=34.6663, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=429 : 20% overlap best hpwl : hpwl=34.6663, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=430 : 10% overlap best hpwl : hpwl=34.665, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=430 : 20% overlap best hpwl : hpwl=34.665, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=431 : 10% overlap best hpwl : hpwl=34.6636, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=431 : 20% overlap best hpwl : hpwl=34.6636, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=432 : 10% overlap best hpwl : hpwl=34.6623, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=432 : 20% overlap best hpwl : hpwl=34.6623, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=433 : 10% overlap best hpwl : hpwl=34.661, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=433 : 20% overlap best hpwl : hpwl=34.661, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=434 : 10% overlap best hpwl : hpwl=34.6597, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=434 : 20% overlap best hpwl : hpwl=34.6597, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=435 : 10% overlap best hpwl : hpwl=34.6584, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=435 : 20% overlap best hpwl : hpwl=34.6584, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=436 : 10% overlap best hpwl : hpwl=34.657, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=436 : 20% overlap best hpwl : hpwl=34.657, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=437 : 10% overlap best hpwl : hpwl=34.6557, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=437 : 20% overlap best hpwl : hpwl=34.6557, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=438 : 10% overlap best hpwl : hpwl=34.6544, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=438 : 20% overlap best hpwl : hpwl=34.6544, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=439 : 10% overlap best hpwl : hpwl=34.6531, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=439 : 20% overlap best hpwl : hpwl=34.6531, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=440 : 10% overlap best hpwl : hpwl=34.6519, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=440 : 20% overlap best hpwl : hpwl=34.6519, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=441 : 10% overlap best hpwl : hpwl=34.6506, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=441 : 20% overlap best hpwl : hpwl=34.6506, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=442 : 10% overlap best hpwl : hpwl=34.6493, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=442 : 20% overlap best hpwl : hpwl=34.6493, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=443 : 10% overlap best hpwl : hpwl=34.648, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=443 : 20% overlap best hpwl : hpwl=34.648, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=444 : 10% overlap best hpwl : hpwl=34.6468, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=444 : 20% overlap best hpwl : hpwl=34.6468, overlap=1.5177
+all_ol=[np.float64(6.070826306913997), np.float64(6.070826306913997)]
+run=0/0 @ episode_step=445 : 10% overlap best hpwl : hpwl=34.6455, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=445 : 20% overlap best hpwl : hpwl=34.6455, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=446 : 10% overlap best hpwl : hpwl=34.6443, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=446 : 20% overlap best hpwl : hpwl=34.6443, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=447 : 10% overlap best hpwl : hpwl=34.6431, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=447 : 20% overlap best hpwl : hpwl=34.6431, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=448 : 10% overlap best hpwl : hpwl=34.6418, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=448 : 20% overlap best hpwl : hpwl=34.6418, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=449 : 10% overlap best hpwl : hpwl=34.6406, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=449 : 20% overlap best hpwl : hpwl=34.6406, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=450 : 10% overlap best hpwl : hpwl=34.6394, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=450 : 20% overlap best hpwl : hpwl=34.6394, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=451 : 10% overlap best hpwl : hpwl=34.6382, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=451 : 20% overlap best hpwl : hpwl=34.6382, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=452 : 10% overlap best hpwl : hpwl=34.637, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=452 : 20% overlap best hpwl : hpwl=34.637, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=453 : 10% overlap best hpwl : hpwl=34.6359, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=453 : 20% overlap best hpwl : hpwl=34.6359, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=454 : 10% overlap best hpwl : hpwl=34.6347, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=454 : 20% overlap best hpwl : hpwl=34.6347, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=455 : 10% overlap best hpwl : hpwl=34.6335, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=455 : 20% overlap best hpwl : hpwl=34.6335, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=456 : 10% overlap best hpwl : hpwl=34.6323, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=456 : 20% overlap best hpwl : hpwl=34.6323, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=457 : 10% overlap best hpwl : hpwl=34.6311, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=457 : 20% overlap best hpwl : hpwl=34.6311, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=458 : 10% overlap best hpwl : hpwl=34.63, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=458 : 20% overlap best hpwl : hpwl=34.63, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=459 : 10% overlap best hpwl : hpwl=34.6288, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=459 : 20% overlap best hpwl : hpwl=34.6288, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=460 : 10% overlap best hpwl : hpwl=34.6277, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=460 : 20% overlap best hpwl : hpwl=34.6277, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=461 : 10% overlap best hpwl : hpwl=34.6265, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=461 : 20% overlap best hpwl : hpwl=34.6265, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=462 : 10% overlap best hpwl : hpwl=34.6254, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=462 : 20% overlap best hpwl : hpwl=34.6254, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=463 : 10% overlap best hpwl : hpwl=34.6242, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=463 : 20% overlap best hpwl : hpwl=34.6242, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=464 : 10% overlap best hpwl : hpwl=34.6231, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=464 : 20% overlap best hpwl : hpwl=34.6231, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=465 : 10% overlap best hpwl : hpwl=34.6219, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=465 : 20% overlap best hpwl : hpwl=34.6219, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=466 : 10% overlap best hpwl : hpwl=34.6208, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=466 : 20% overlap best hpwl : hpwl=34.6208, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=467 : 10% overlap best hpwl : hpwl=34.6197, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=467 : 20% overlap best hpwl : hpwl=34.6197, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=468 : 10% overlap best hpwl : hpwl=34.6186, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=468 : 20% overlap best hpwl : hpwl=34.6186, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=469 : 10% overlap best hpwl : hpwl=34.6174, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=469 : 20% overlap best hpwl : hpwl=34.6174, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=470 : 10% overlap best hpwl : hpwl=34.6163, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=470 : 20% overlap best hpwl : hpwl=34.6163, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=471 : 10% overlap best hpwl : hpwl=34.6152, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=471 : 20% overlap best hpwl : hpwl=34.6152, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=472 : 10% overlap best hpwl : hpwl=34.6141, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=472 : 20% overlap best hpwl : hpwl=34.6141, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=473 : 10% overlap best hpwl : hpwl=34.613, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=473 : 20% overlap best hpwl : hpwl=34.613, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=474 : 10% overlap best hpwl : hpwl=34.6119, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=474 : 20% overlap best hpwl : hpwl=34.6119, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=475 : 10% overlap best hpwl : hpwl=34.6108, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=475 : 20% overlap best hpwl : hpwl=34.6108, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=476 : 10% overlap best hpwl : hpwl=34.6097, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=476 : 20% overlap best hpwl : hpwl=34.6097, overlap=1.4756
+all_ol=[np.float64(6.07142857142857), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=477 : 10% overlap best hpwl : hpwl=34.6086, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=477 : 20% overlap best hpwl : hpwl=34.6086, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=478 : 10% overlap best hpwl : hpwl=34.6075, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=478 : 20% overlap best hpwl : hpwl=34.6075, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=479 : 10% overlap best hpwl : hpwl=34.6065, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=479 : 20% overlap best hpwl : hpwl=34.6065, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=480 : 10% overlap best hpwl : hpwl=34.6054, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=480 : 20% overlap best hpwl : hpwl=34.6054, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=481 : 10% overlap best hpwl : hpwl=34.6043, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=481 : 20% overlap best hpwl : hpwl=34.6043, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=482 : 10% overlap best hpwl : hpwl=34.6032, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=482 : 20% overlap best hpwl : hpwl=34.6032, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=483 : 10% overlap best hpwl : hpwl=34.6022, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=483 : 20% overlap best hpwl : hpwl=34.6022, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=484 : 10% overlap best hpwl : hpwl=34.6011, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=484 : 20% overlap best hpwl : hpwl=34.6011, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=485 : 10% overlap best hpwl : hpwl=34.6001, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=485 : 20% overlap best hpwl : hpwl=34.6001, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=486 : 10% overlap best hpwl : hpwl=34.599, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=486 : 20% overlap best hpwl : hpwl=34.599, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=487 : 10% overlap best hpwl : hpwl=34.5979, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=487 : 20% overlap best hpwl : hpwl=34.5979, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=488 : 10% overlap best hpwl : hpwl=34.5969, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=488 : 20% overlap best hpwl : hpwl=34.5969, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=489 : 10% overlap best hpwl : hpwl=34.5959, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=489 : 20% overlap best hpwl : hpwl=34.5959, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=490 : 10% overlap best hpwl : hpwl=34.5948, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=490 : 20% overlap best hpwl : hpwl=34.5948, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=491 : 10% overlap best hpwl : hpwl=34.5938, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=491 : 20% overlap best hpwl : hpwl=34.5938, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=492 : 10% overlap best hpwl : hpwl=34.5927, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=492 : 20% overlap best hpwl : hpwl=34.5927, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=493 : 10% overlap best hpwl : hpwl=34.5917, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=493 : 20% overlap best hpwl : hpwl=34.5917, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=494 : 10% overlap best hpwl : hpwl=34.5907, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=494 : 20% overlap best hpwl : hpwl=34.5907, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=495 : 10% overlap best hpwl : hpwl=34.5897, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=495 : 20% overlap best hpwl : hpwl=34.5897, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=496 : 10% overlap best hpwl : hpwl=34.5886, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=496 : 20% overlap best hpwl : hpwl=34.5886, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=497 : 10% overlap best hpwl : hpwl=34.5876, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=497 : 20% overlap best hpwl : hpwl=34.5876, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=498 : 10% overlap best hpwl : hpwl=34.5866, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=498 : 20% overlap best hpwl : hpwl=34.5866, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=499 : 10% overlap best hpwl : hpwl=34.5856, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=499 : 20% overlap best hpwl : hpwl=34.5856, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=500 : 10% overlap best hpwl : hpwl=34.5846, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=500 : 20% overlap best hpwl : hpwl=34.5846, overlap=1.4334
+all_ol=[np.float64(5.733558178752107), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=501 : 10% overlap best hpwl : hpwl=34.5836, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=501 : 20% overlap best hpwl : hpwl=34.5836, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=502 : 10% overlap best hpwl : hpwl=34.5825, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=502 : 20% overlap best hpwl : hpwl=34.5825, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=503 : 10% overlap best hpwl : hpwl=34.5814, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=503 : 20% overlap best hpwl : hpwl=34.5814, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=504 : 10% overlap best hpwl : hpwl=34.5804, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=504 : 20% overlap best hpwl : hpwl=34.5804, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=505 : 10% overlap best hpwl : hpwl=34.5793, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=505 : 20% overlap best hpwl : hpwl=34.5793, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=506 : 10% overlap best hpwl : hpwl=34.5782, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=506 : 20% overlap best hpwl : hpwl=34.5782, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=507 : 10% overlap best hpwl : hpwl=34.5771, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=507 : 20% overlap best hpwl : hpwl=34.5771, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=508 : 10% overlap best hpwl : hpwl=34.5761, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=508 : 20% overlap best hpwl : hpwl=34.5761, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=509 : 10% overlap best hpwl : hpwl=34.575, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=509 : 20% overlap best hpwl : hpwl=34.575, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=510 : 10% overlap best hpwl : hpwl=34.5739, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=510 : 20% overlap best hpwl : hpwl=34.5739, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=511 : 10% overlap best hpwl : hpwl=34.5729, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=511 : 20% overlap best hpwl : hpwl=34.5729, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=512 : 10% overlap best hpwl : hpwl=34.5718, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=512 : 20% overlap best hpwl : hpwl=34.5718, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=513 : 10% overlap best hpwl : hpwl=34.5708, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=513 : 20% overlap best hpwl : hpwl=34.5708, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=514 : 10% overlap best hpwl : hpwl=34.5697, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=514 : 20% overlap best hpwl : hpwl=34.5697, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=515 : 10% overlap best hpwl : hpwl=34.5687, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=515 : 20% overlap best hpwl : hpwl=34.5687, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=516 : 10% overlap best hpwl : hpwl=34.5677, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=516 : 20% overlap best hpwl : hpwl=34.5677, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=517 : 10% overlap best hpwl : hpwl=34.5666, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=517 : 20% overlap best hpwl : hpwl=34.5666, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=518 : 10% overlap best hpwl : hpwl=34.5656, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=518 : 20% overlap best hpwl : hpwl=34.5656, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=519 : 10% overlap best hpwl : hpwl=34.5646, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=519 : 20% overlap best hpwl : hpwl=34.5646, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=520 : 10% overlap best hpwl : hpwl=34.5636, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=520 : 20% overlap best hpwl : hpwl=34.5636, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=521 : 10% overlap best hpwl : hpwl=34.5625, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=521 : 20% overlap best hpwl : hpwl=34.5625, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=522 : 10% overlap best hpwl : hpwl=34.5615, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=522 : 20% overlap best hpwl : hpwl=34.5615, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=523 : 10% overlap best hpwl : hpwl=34.5605, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=523 : 20% overlap best hpwl : hpwl=34.5605, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=524 : 10% overlap best hpwl : hpwl=34.5595, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=524 : 20% overlap best hpwl : hpwl=34.5595, overlap=1.4334
+all_ol=[np.float64(5.733558178752108), np.float64(5.733558178752108)]
+run=0/0 @ episode_step=525 : 10% overlap best hpwl : hpwl=34.5585, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=525 : 20% overlap best hpwl : hpwl=34.5585, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=526 : 10% overlap best hpwl : hpwl=34.5575, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=526 : 20% overlap best hpwl : hpwl=34.5575, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=527 : 10% overlap best hpwl : hpwl=34.5566, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=527 : 20% overlap best hpwl : hpwl=34.5566, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=528 : 10% overlap best hpwl : hpwl=34.5556, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=528 : 20% overlap best hpwl : hpwl=34.5556, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=529 : 10% overlap best hpwl : hpwl=34.5547, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=529 : 20% overlap best hpwl : hpwl=34.5547, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=530 : 10% overlap best hpwl : hpwl=34.5537, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=530 : 20% overlap best hpwl : hpwl=34.5537, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=531 : 10% overlap best hpwl : hpwl=34.5528, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=531 : 20% overlap best hpwl : hpwl=34.5528, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=532 : 10% overlap best hpwl : hpwl=34.5519, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=532 : 20% overlap best hpwl : hpwl=34.5519, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=533 : 10% overlap best hpwl : hpwl=34.5509, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=533 : 20% overlap best hpwl : hpwl=34.5509, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=534 : 10% overlap best hpwl : hpwl=34.55, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=534 : 20% overlap best hpwl : hpwl=34.55, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=535 : 10% overlap best hpwl : hpwl=34.549, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=535 : 20% overlap best hpwl : hpwl=34.549, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=536 : 10% overlap best hpwl : hpwl=34.5481, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=536 : 20% overlap best hpwl : hpwl=34.5481, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=537 : 10% overlap best hpwl : hpwl=34.5472, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=537 : 20% overlap best hpwl : hpwl=34.5472, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=538 : 10% overlap best hpwl : hpwl=34.5463, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=538 : 20% overlap best hpwl : hpwl=34.5463, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=539 : 10% overlap best hpwl : hpwl=34.5454, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=539 : 20% overlap best hpwl : hpwl=34.5454, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=540 : 10% overlap best hpwl : hpwl=34.5444, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=540 : 20% overlap best hpwl : hpwl=34.5444, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=541 : 10% overlap best hpwl : hpwl=34.5435, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=541 : 20% overlap best hpwl : hpwl=34.5435, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=542 : 10% overlap best hpwl : hpwl=34.5426, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=542 : 20% overlap best hpwl : hpwl=34.5426, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=543 : 10% overlap best hpwl : hpwl=34.5417, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=543 : 20% overlap best hpwl : hpwl=34.5417, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=544 : 10% overlap best hpwl : hpwl=34.5408, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=544 : 20% overlap best hpwl : hpwl=34.5408, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=545 : 10% overlap best hpwl : hpwl=34.5399, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=545 : 20% overlap best hpwl : hpwl=34.5399, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=546 : 10% overlap best hpwl : hpwl=34.539, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=546 : 20% overlap best hpwl : hpwl=34.539, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=547 : 10% overlap best hpwl : hpwl=34.5381, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=547 : 20% overlap best hpwl : hpwl=34.5381, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=548 : 10% overlap best hpwl : hpwl=34.5372, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=548 : 20% overlap best hpwl : hpwl=34.5372, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=549 : 10% overlap best hpwl : hpwl=34.5363, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=549 : 20% overlap best hpwl : hpwl=34.5363, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=550 : 10% overlap best hpwl : hpwl=34.5355, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=550 : 20% overlap best hpwl : hpwl=34.5355, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=551 : 10% overlap best hpwl : hpwl=34.5346, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=551 : 20% overlap best hpwl : hpwl=34.5346, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=552 : 10% overlap best hpwl : hpwl=34.5337, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=552 : 20% overlap best hpwl : hpwl=34.5337, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=553 : 10% overlap best hpwl : hpwl=34.5328, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=553 : 20% overlap best hpwl : hpwl=34.5328, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=554 : 10% overlap best hpwl : hpwl=34.5319, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=554 : 20% overlap best hpwl : hpwl=34.5319, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=555 : 10% overlap best hpwl : hpwl=34.5311, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=555 : 20% overlap best hpwl : hpwl=34.5311, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=556 : 10% overlap best hpwl : hpwl=34.5302, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=556 : 20% overlap best hpwl : hpwl=34.5302, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=557 : 10% overlap best hpwl : hpwl=34.5293, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=557 : 20% overlap best hpwl : hpwl=34.5293, overlap=1.3677
+all_ol=[np.float64(5.714285714285714), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=558 : 10% overlap best hpwl : hpwl=34.5285, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=558 : 20% overlap best hpwl : hpwl=34.5285, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=559 : 10% overlap best hpwl : hpwl=34.5276, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=559 : 20% overlap best hpwl : hpwl=34.5276, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=560 : 10% overlap best hpwl : hpwl=34.5268, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=560 : 20% overlap best hpwl : hpwl=34.5268, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=561 : 10% overlap best hpwl : hpwl=34.5259, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=561 : 20% overlap best hpwl : hpwl=34.5259, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=562 : 10% overlap best hpwl : hpwl=34.5251, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=562 : 20% overlap best hpwl : hpwl=34.5251, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=563 : 10% overlap best hpwl : hpwl=34.5242, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=563 : 20% overlap best hpwl : hpwl=34.5242, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=564 : 10% overlap best hpwl : hpwl=34.5234, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=564 : 20% overlap best hpwl : hpwl=34.5234, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=565 : 10% overlap best hpwl : hpwl=34.5225, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=565 : 20% overlap best hpwl : hpwl=34.5225, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=566 : 10% overlap best hpwl : hpwl=34.5217, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=566 : 20% overlap best hpwl : hpwl=34.5217, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=567 : 10% overlap best hpwl : hpwl=34.5208, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=567 : 20% overlap best hpwl : hpwl=34.5208, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=568 : 10% overlap best hpwl : hpwl=34.52, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=568 : 20% overlap best hpwl : hpwl=34.52, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=569 : 10% overlap best hpwl : hpwl=34.5192, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=569 : 20% overlap best hpwl : hpwl=34.5192, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=570 : 10% overlap best hpwl : hpwl=34.5183, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=570 : 20% overlap best hpwl : hpwl=34.5183, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=571 : 10% overlap best hpwl : hpwl=34.5175, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=571 : 20% overlap best hpwl : hpwl=34.5175, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=572 : 10% overlap best hpwl : hpwl=34.5167, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=572 : 20% overlap best hpwl : hpwl=34.5167, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=573 : 10% overlap best hpwl : hpwl=34.5159, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=573 : 20% overlap best hpwl : hpwl=34.5159, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=574 : 10% overlap best hpwl : hpwl=34.515, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=574 : 20% overlap best hpwl : hpwl=34.515, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=575 : 10% overlap best hpwl : hpwl=34.5142, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=575 : 20% overlap best hpwl : hpwl=34.5142, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=576 : 10% overlap best hpwl : hpwl=34.5134, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=576 : 20% overlap best hpwl : hpwl=34.5134, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=577 : 10% overlap best hpwl : hpwl=34.5126, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=577 : 20% overlap best hpwl : hpwl=34.5126, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=578 : 10% overlap best hpwl : hpwl=34.5118, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=578 : 20% overlap best hpwl : hpwl=34.5118, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=579 : 10% overlap best hpwl : hpwl=34.511, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=579 : 20% overlap best hpwl : hpwl=34.511, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=580 : 10% overlap best hpwl : hpwl=34.5102, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=580 : 20% overlap best hpwl : hpwl=34.5102, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=581 : 10% overlap best hpwl : hpwl=34.5094, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=581 : 20% overlap best hpwl : hpwl=34.5094, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=582 : 10% overlap best hpwl : hpwl=34.5086, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=582 : 20% overlap best hpwl : hpwl=34.5086, overlap=1.328
+all_ol=[np.float64(5.396290050590219), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=583 : 10% overlap best hpwl : hpwl=34.5078, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=583 : 20% overlap best hpwl : hpwl=34.5078, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=584 : 10% overlap best hpwl : hpwl=34.5069, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=584 : 20% overlap best hpwl : hpwl=34.5069, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=585 : 10% overlap best hpwl : hpwl=34.5061, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=585 : 20% overlap best hpwl : hpwl=34.5061, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=586 : 10% overlap best hpwl : hpwl=34.5053, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=586 : 20% overlap best hpwl : hpwl=34.5053, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=587 : 10% overlap best hpwl : hpwl=34.5044, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=587 : 20% overlap best hpwl : hpwl=34.5044, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=588 : 10% overlap best hpwl : hpwl=34.5036, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=588 : 20% overlap best hpwl : hpwl=34.5036, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=589 : 10% overlap best hpwl : hpwl=34.5028, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=589 : 20% overlap best hpwl : hpwl=34.5028, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=590 : 10% overlap best hpwl : hpwl=34.502, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=590 : 20% overlap best hpwl : hpwl=34.502, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=591 : 10% overlap best hpwl : hpwl=34.5012, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=591 : 20% overlap best hpwl : hpwl=34.5012, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=592 : 10% overlap best hpwl : hpwl=34.5003, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=592 : 20% overlap best hpwl : hpwl=34.5003, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=593 : 10% overlap best hpwl : hpwl=34.4995, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=593 : 20% overlap best hpwl : hpwl=34.4995, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=594 : 10% overlap best hpwl : hpwl=34.4987, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=594 : 20% overlap best hpwl : hpwl=34.4987, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=595 : 10% overlap best hpwl : hpwl=34.4979, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=595 : 20% overlap best hpwl : hpwl=34.4979, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=596 : 10% overlap best hpwl : hpwl=34.4971, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=596 : 20% overlap best hpwl : hpwl=34.4971, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=597 : 10% overlap best hpwl : hpwl=34.4963, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=597 : 20% overlap best hpwl : hpwl=34.4963, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=598 : 10% overlap best hpwl : hpwl=34.4955, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=598 : 20% overlap best hpwl : hpwl=34.4955, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=599 : 10% overlap best hpwl : hpwl=34.4947, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=599 : 20% overlap best hpwl : hpwl=34.4947, overlap=1.3069
+all_ol=[np.float64(5.227655986509274), np.float64(5.227655986509274)]
+run=0/0 @ episode_step=600 : 10% overlap best hpwl : hpwl=34.4939, overlap=0.6535
+all_ol=[np.float64(5.227655986509274)]
+run=0/0 @ episode_step=600 : 20% overlap best hpwl : hpwl=34.4939, overlap=0.6535
+all_ol=[np.float64(5.227655986509274)]
+eval_env episode 0 performed 600 steps in environment.

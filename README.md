@@ -37,7 +37,7 @@ The main contribution of this work is:
 **Figure 1**: Succesful policies optimising circuits not seen during training. 
 
 # Installation Guide
-**It is very important that the installation procedure is carried out while being in the root of the repository (i.e. the same location as the script install_tools_and_virtual_environment.sh)**
+**It is very important that the installation procedure is carried out while being in the root of the repository (i.e. the same location as the script install_tools.sh)**
 
 ## Install Pre-requisites
 The following packages must be installed on the system to compile libraries for parsing KiCAD PCB files (.kicad_pcb) and place-and-route tools.
@@ -60,51 +60,80 @@ The automated installation procedure makes the following changes to the local re
 - Installs the wheel libraries in the lib folder
 
 ```
-./install_tools_and_virtual_environment.sh --env_only
+./install_tools.sh --env_only
 ```
 
 If you do not have CUDA 11.7 installed, you can install the CPU only. Tests an experiments will run significantly slower but works out of the box.
 ```
-./install_tools_and_virtual_environment.sh --env_only --cpu_only
+./install_tools.sh --env_only --cpu_only
 ```
 
-If you require a different version of CUDA, please make the following changes and run `install_tools_and_virtual_environment.sh` without any options:
+If you require a different version of CUDA, please make the following changes and run `install_tools.sh` without any options:
 - To `setup.sh` script, change the CUDA path to point to your installation of CUDA.
-- To `install_tools_and_virtual_environment.sh` script, change the PyTorch libraries to use your CUDA version. 
+- To `install_tools.sh` script, change the PyTorch libraries to use your CUDA version. 
 
 Using a CPU device or alternative CUDA version will yield different results than the accompanying pdf reports for tests and experiments.
 
-# Run tests and experiments
-Always source the environment setup script before running any tests or experiments. **The script should be run from the root of the repository**
-```
+# Run Tests and Experiments
+Always source the environment setup script before running any tests or experiments. **Commands should be executed from the root of the repository.**
+```bash
 cd <path-to-rl_pcb>
 source setup.sh 
 ```
 
-Run an experiment
-```
+## Available Experiments
+
+Experiments are designed to benchmark different facets of the reinforcement learning process. Each is housed in the `experiments/` directory and can be executed via their respective `./run.sh` script.
+
+1. **`00_parameter_exeperiments`**: Tests various combinations of reward weightings (Euclidean Wirelength vs. Half-Perimeter Wirelength vs. Overlap). **Yields**: A report and visualizations detailing performance metrics across different policy penalty weights.
+2. **`01_parameter_expert_experiments`**: Matches the parameter searches from `00` but provides the agent with pre-loaded expert layout targets. **Yields**: Charts highlighting how quickly the RL policy leverages expert baselines to find optimal states.
+3. **`02_ablation_experiments`**: Systematically strips away different structural components (e.g., specific neural network perceptron layers, specific loss metrics). **Yields**: Validation reports measuring the impact and necessity of varying algorithm elements on routing success.
+4. **`03_ablation_expert_experiments`**: Mirrors `02` using expert targets instead. **Yields**: Comparisons showing how stripping models reduces their ability to hit known optimal expert thresholds.
+5. **`04_replay_buffer_sizing_experiments`**: Examines the effects of scaling the RL replay memory size constraints. **Yields**: Performance tables displaying the interplay between iteration times and convergence speeds under different buffer capacities.
+
+To run an experiment, navigate to its directory and run the script:
+```bash
 cd experiments/00_parameter_exeperiments
-./run.sh    
+./run.sh
 ```
 
-Run a test - tests are used to validate the correct operation of the source code. They are periodically run in a Continuous Integration (CI) environment.
-```
+## Available Tests
+
+Tests are localized scripts designed to validate the codebase environment setups. They are structurally useful for Continuous Integration (CI). There are 8 standard tests inside the `tests/` directory:
+
+- **`00_verify_machine_setup`**: Asserts that CUDA, Python, and required libraries are properly bound.
+- **`01...07` Training Verifiers**: Assorts short validation loops covering algorithm combinations (TD3 vs. SAC), compute targets (CPU vs CUDA), and timings (Standard vs. Fast). 
+
+To run a test:
+```bash
 cd tests/01_training_td3_cpu
 ./run.sh
 ```
 
-The script `run.sh` will perform the following: 
-1. Carry out the training run(s) by following the instructions in `run_config.txt` that is located within the same directory
-2. Generates an experiment report that processes the experimental data and presents the results in tables and figures. All experiment metadata is also reported, and customisation is possible through `report_config.py`, located within the same directory.
-3. Evaluate all policies alongside simulated annealing baseline. All optimised placements are subsequently routed using an A\* based algorithm. 
-4. Generate a report that processes all evaluation data and tabulates HPWL and routed wirelength metrics. All experiment metadata is also reported.
+## Execution Outcomes
+The `./run.sh` script included in every test and experiment folder standardizes execution. It will automatically:
+1. Carry out the training run(s) per `run_config.txt`.
+2. Generate an experiment report displaying tables, figures, and experiment metadata. (Customization is possible via `report_config.py`).
+3. Evaluate the policies against simulated annealing and route placements using a built-in A* algorithm. 
+4. Pack evaluation data (HPWL and total routed wire length) into the final metrics report.
 
-The generated files can be cleaned by running the following:
-```
+You can clear any compiled runtime logs or `.kicad_pcb` modifications using:
+```bash
 ./clean.sh
 ```
 
 Every test and experiment contains a directory called `expected results` that contains pre-generated reports. Should you run the experiments as provided, identical results are to be expected.
+
+# Google Colab Support (Cloud GPU)
+If you do not have a local GPU, you can run experiments on Google Colab using our provided Jupyter Notebooks.
+
+1. **Master Notebook**: Located at `notebooks/RL_PCB_Colab_Master.ipynb`. This is a unified notebook where you can select algorithms and hyperparameters via a UI.
+2. **Experiment Notebooks**: Every test in the `tests/` directory now includes a corresponding `.ipynb` file (e.g., `tests/09_training_dreamerv3_cpu_fast/09_training_dreamerv3_cpu_fast.ipynb`) that is pre-configured for that specific test.
+
+To use these on Colab:
+- Upload the desired `.ipynb` file to Google Colab.
+- Ensure the runtime is set to **GPU** (Runtime -> Change runtime type -> Hardware accelerator: GPU).
+- Follow the instructions in the notebook to clone the repo and build dependencies.
 
 # GPU Setup (Optional)
 This section provides an optional setup procedure to remove the Nvidia GPU driver and all dependent libraries and perform a fresh install. **The commands in this section make big changes to your system. Please read carefully before running commands** Some command changes will be required.

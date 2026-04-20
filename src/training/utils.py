@@ -3,6 +3,28 @@ import numpy as np
 from collections import namedtuple
 import random
 
+def create_mlp(input_dim, output_dim, architecture, activation_fn_name, intermediate_activations=True):
+    """Creates a PyTorch MLP wrapped in nn.Sequential."""
+    if activation_fn_name == "relu":
+        activation_fn = torch.nn.ReLU
+    elif activation_fn_name == "tanh":
+        activation_fn = torch.nn.Tanh
+    else:
+        activation_fn = torch.nn.ReLU
+        
+    layers = []
+    in_size = input_dim
+    for layer_sz in architecture:
+        layers.append(torch.nn.Linear(in_size, layer_sz))
+        if intermediate_activations:
+            layers.append(activation_fn())
+        in_size = layer_sz
+        
+    if output_dim is not None:
+        layers.append(torch.nn.Linear(in_size, output_dim))
+        
+    return torch.nn.Sequential(*layers)
+
 def soft_update(target, source, tau):
     for target_param, param in zip(target.parameters(), source.parameters()):
         target_param.data.copy_(
@@ -127,11 +149,11 @@ class ReplayMemory(object):
         transitions = random.sample(self.memory, batch_size)
         batch = Transition(*zip(*transitions))
 
-        state = torch.FloatTensor(np.concatenate(batch.state)).to(self.device)
-        action = torch.FloatTensor(np.concatenate(batch.action)).to(self.device)
-        next_state = torch.FloatTensor(np.concatenate(batch.next_state)).to(self.device)
-        reward = torch.FloatTensor(np.concatenate(batch.reward)).to(self.device)
-        done = torch.FloatTensor(np.concatenate(batch.done)).to(self.device)
+        state = torch.as_tensor(np.concatenate(batch.state), dtype=torch.float32, device=self.device)
+        action = torch.as_tensor(np.concatenate(batch.action), dtype=torch.float32, device=self.device)
+        next_state = torch.as_tensor(np.concatenate(batch.next_state), dtype=torch.float32, device=self.device)
+        reward = torch.as_tensor(np.concatenate(batch.reward), dtype=torch.float32, device=self.device)
+        done = torch.as_tensor(np.concatenate(batch.done), dtype=torch.float32, device=self.device)
         return state, action, next_state, reward, done
 
     def sample_from_latest(self, batch_size, latest):
@@ -151,11 +173,11 @@ class ReplayMemory(object):
         transitions = random.sample(latest_trans, batch_size)
         batch = Transition(*zip(*transitions))
 
-        state = torch.FloatTensor(np.concatenate(batch.state)).to(self.device)
-        action = torch.FloatTensor(np.concatenate(batch.action)).to(self.device)
-        next_state = torch.FloatTensor(np.concatenate(batch.next_state)).to(self.device)
-        reward = torch.FloatTensor(np.concatenate(batch.reward)).to(self.device)
-        done = torch.FloatTensor(np.concatenate(batch.done)).to(self.device)
+        state = torch.as_tensor(np.concatenate(batch.state), dtype=torch.float32, device=self.device)
+        action = torch.as_tensor(np.concatenate(batch.action), dtype=torch.float32, device=self.device)
+        next_state = torch.as_tensor(np.concatenate(batch.next_state), dtype=torch.float32, device=self.device)
+        reward = torch.as_tensor(np.concatenate(batch.reward), dtype=torch.float32, device=self.device)
+        done = torch.as_tensor(np.concatenate(batch.done), dtype=torch.float32, device=self.device)
         return state, action, next_state, reward, done
 
     def __len__(self):

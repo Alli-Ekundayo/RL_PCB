@@ -3,6 +3,17 @@ from pcb_vector_utils import compute_pad_referenced_distance_vectors_v2, compute
 from pcb_vector_utils import wrap_angle
 import numpy as np
 
+
+def flatten_observation(obs: dict) -> list:
+    """Flatten observation dict into a flat state vector.
+
+    Combines los, ol, dom, euc_dist, position, and orientation into a single list.
+    """
+    return (list(obs["los"]) + list(obs["ol"]) + obs["dom"] +
+            obs["euc_dist"] + obs["position"] + obs["ortientation"])
+
+
+
 def line_of_sight_and_overlap_v0(parameters, comp_grids):
     los_grids = []
     los = []

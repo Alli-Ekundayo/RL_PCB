@@ -1,0 +1,23 @@
+timestamp=2026-04-17 15:57:39:255725
+parameters begin
+	training_pcb -> None
+	evaluation_pcb -> None
+	pcb_file -> /home/alli-ekundayo/Projects/RL_PCB/dataset/base/evaluation.pcb
+	net -> 
+	use_dataAugmenter -> True
+	augment_position -> True
+	augment_orientation -> True
+	agent_max_action -> 1
+	agent_expl_noise -> 0.1
+	debug -> True
+	max_steps -> 600
+	n -> 4.0
+	m -> 2.0
+	p -> 4.0
+	seed -> 2173385197
+	ignore_power -> True
+	log_dir -> None
+	idx -> 2
+	shuffle_idxs -> False
+parameters end
+eval_env episode 0 performed 600 steps in environment.

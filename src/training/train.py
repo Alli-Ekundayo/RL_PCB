@@ -68,13 +68,9 @@ def training_run(settings):
     settings["log_dir"] = os.path.join(settings["tensorboard_dir"],
                                        settings["run_name"] + f'_{settings["run"]}_{settings["policy"]}')
 
-    # Create directory if it doesn't exsit.
-    if not os.path.isdir(settings["tensorboard_dir"]):
-        os.makedirs(settings["tensorboard_dir"])
-
-    # Create directory if it doesn't exsit.
-    if not os.path.isdir(settings["log_dir"]):
-        os.makedirs(settings["log_dir"])
+    # Create directories idempotently to avoid races between concurrent runs.
+    os.makedirs(settings["tensorboard_dir"], exist_ok=True)
+    os.makedirs(settings["log_dir"], exist_ok=True)
 
     hp = load_hyperparameters_from_file(settings["hyperparameters"])
 

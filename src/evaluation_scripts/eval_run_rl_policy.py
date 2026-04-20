@@ -72,7 +72,7 @@ def configure_seed(args):
         rng = np.random.default_rng(seed=int(datetime.now().strftime("%s")))
         for _ in range(args.runs):
             args.seed.append(
-                np.int0(rng.uniform(low=0,high=(np.power(2,32)-1)))
+                int(rng.uniform(low=0,high=(np.power(2,32)-1)))
                 )
     else:
         # seed value is not provided or not provided correctly
@@ -82,15 +82,15 @@ def configure_seed(args):
             args.seed = []
             for _ in range(args.runs):
                 args.seed.append(
-                    np.int0(rng.uniform(low=0,high=(np.power(2,32)-1)))
+                    int(rng.uniform(low=0,high=(np.power(2,32)-1)))
                     )
 
 def cmdline_args():
     parser = argparse.ArgumentParser(
         description="Multi-agent pcb component placement evaluation",
-        usage="<script-name> -p <pcb_file> --rl_model_type [TD3 | SAC]",
+        usage="<script-name> -p <pcb_file> --rl_model_type [TD3 | SAC | DreamerV3]",
         epilog="This text will be shown after the help")
-    parser.add_argument("--policy", type=str, choices=["TD3", "SAC"],
+    parser.add_argument("--policy", type=str, choices=["TD3", "SAC", "DreamerV3"],
                         required=True)
     parser.add_argument("--model", type=str, required=True)
     parser.add_argument("--pcb_file", type=str, required=True)
@@ -117,6 +117,8 @@ def cmdline_args():
                         help="Colon seperated weights for euclidean wirelength, hpwl and overlap")
     parser.add_argument("--shuffle_idxs", required=False, action="store_true",
                         help="shuffle agent idx prior to stepping in the environment")
+    parser.add_argument("--intermediate_activations", required=False, action="store_true", default=False,
+                        help="Add intermediate activation functions to the MLP architecture.")
 
     args = parser.parse_args()
     settings = {}
@@ -143,6 +145,7 @@ def cmdline_args():
     settings["verbose"] = args.verbose
     settings["output"] = args.output
     settings["quick_eval"] = args.quick_eval
+    settings["intermediate_activations"] = args.intermediate_activations
 
     rp = args.reward_params.split(":")
 
@@ -166,12 +169,14 @@ def evaluation_run(settings):
     model = setup_model(model_type=settings["policy"],
                         train_env=None,
                         hyperparameters=hp,
-                        device=settings["device"])
+                        device=settings["device"],
+                        intermediate_activations=settings["intermediate_activations"])
     try:
         model.load(settings["model"])
-    except:
-        print("Failed to load model. Does the hyperparameters file correspond\
-               to the model file?")
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        print(f"Failed to load model: {e}")
         sys.exit()
 
     Path(settings["output"]).mkdir(parents=True, exist_ok=True)
@@ -248,11 +253,17 @@ def evaluation_run(settings):
                                         deterministic=True,
                                         rl_model_type="TD3")
                 step_reward=0
-            else:   # SAC
+            elif settings["policy"] == "SAC":
                 obs_vec = eval_env.step(model=model.policy,
                                         random=False,
                                         deterministic=True,
                                         rl_model_type="SAC")
+                step_reward=0
+            else:   # DreamerV3
+                obs_vec = eval_env.step(model=model,
+                                        random=False,
+                                        deterministic=True,
+                                        rl_model_type="DreamerV3")
                 step_reward=0
 
             for indiv_obs in obs_vec:
@@ -373,5 +384,8 @@ if __name__ == "__main__":
     try:
         main()
         sys.exit(0) # success
-    except:
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        print(f"Evaluation failed: {e}")
         sys.exit(-1) # fail

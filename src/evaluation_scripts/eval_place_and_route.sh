@@ -13,7 +13,7 @@ kicad_pcb_from_pcb()
     echo $1
     while read -r line;
     do
-        kicad_pcb=$(echo "$line" | awk '{split($0,a,"="); if(a[1] == ".kicad_pcb") {print a[2];} }')
+        kicad_pcb=$(echo "$line" | awk '{split($0,a,"="); if(a[1] ~ /.kicad_pcb/) {print a[2];} }')
     if [ ! -z "$kicad_pcb" ];
     then
         return $kicad_pcb
@@ -113,7 +113,7 @@ for board in ${EVALUATION_DIR}/* ; do
 
             while read -r line;
             do
-                ORIGINAL_KICAD_PCB=$(echo "$line" | awk '{split($0,a,"="); if(a[1] == ".kicad_pcb") {print a[2];} }')
+                ORIGINAL_KICAD_PCB=$(echo "$line" | awk '{split($0,a,"="); if(a[1] ~ /.kicad_pcb/) {print a[2];} }')
                 if [ ! -z "$ORIGINAL_KICAD_PCB" ];
                 then
                     break
@@ -163,7 +163,7 @@ for board in ${EVALUATION_DIR}/* ; do
             
             while read -r line;
             do
-                ORIGINAL_KICAD_PCB=$(echo "$line" | awk '{split($0,a,"="); if(a[1] == ".kicad_pcb") {print a[2];} }')
+                ORIGINAL_KICAD_PCB=$(echo "$line" | awk '{split($0,a,"="); if(a[1] ~ /.kicad_pcb/) {print a[2];} }')
                 if [ ! -z "$ORIGINAL_KICAD_PCB" ];
                 then
                     break
@@ -185,7 +185,7 @@ for board in ${EVALUATION_DIR}/* ; do
             
             while read -r line;
             do
-                ORIGINAL_KICAD_PCB=$(echo "$line" | awk '{split($0,a,"="); if(a[1] == ".kicad_pcb") {print a[2];} }')
+                ORIGINAL_KICAD_PCB=$(echo "$line" | awk '{split($0,a,"="); if(a[1] ~ /.kicad_pcb/) {print a[2];} }')
                 if [ ! -z "$ORIGINAL_KICAD_PCB" ];
                 then
                     break
@@ -207,7 +207,7 @@ for board in ${EVALUATION_DIR}/* ; do
             
             while read -r line;
             do
-                ORIGINAL_KICAD_PCB=$(echo "$line" | awk '{split($0,a,"="); if(a[1] == ".kicad_pcb") {print a[2];} }')
+                ORIGINAL_KICAD_PCB=$(echo "$line" | awk '{split($0,a,"="); if(a[1] ~ /.kicad_pcb/) {print a[2];} }')
                 if [ ! -z "$ORIGINAL_KICAD_PCB" ];
                 then
                     break

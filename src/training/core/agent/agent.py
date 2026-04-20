@@ -1,9 +1,9 @@
 from pcb_vector_utils import compute_sum_of_euclidean_distances_between_pads
 import numpy as np
-import gym
-from gym import spaces
+import gymnasium as gym
+from gymnasium import spaces
 
-from core.agent.observation import get_agent_observation
+from core.agent.observation import get_agent_observation, flatten_observation
 from core.agent.tracker import tracker
 
 from pcbDraw import draw_board_from_board_and_graph_multi_agent
@@ -57,6 +57,7 @@ class agent(gym.Env):
     def reset(self):
         self.tracker.reset()
         self.steps_done = 0
+        self.log_buffer = []
 
         self.W = []
         self.HPWL = []
@@ -85,7 +86,7 @@ class agent(gym.Env):
              rl_model_type:str = "TD3"):
         self.steps_done += 1
         state = get_agent_observation(parameters=self.parameters)
-        _state = list(state["los"]) + list(state["ol"]) + state["dom"] + state["euc_dist"] + state["position"] + state["ortientation"]
+        _state = flatten_observation(state)
 
         if random is True:
             action = self.action_space.sample()
@@ -117,14 +118,19 @@ class agent(gym.Env):
         step_scale = (self.parameters.step_size * action[0])
         x_offset = step_scale*np.cos(-action[1])
         y_offset = step_scale*np.sin(-action[1])
-        angle = (np.int0(action[2] * 4) % 4) * 90.0
+        angle = (int(action[2] * 4) % 4) * 90.0
 
         self.parameters.node.set_pos(
-            tuple([pos[0] + x_offset, pos[1] + y_offset]))
+            (float(pos[0] + x_offset), float(pos[1] + y_offset)))
         self.parameters.node.set_orientation(angle)
 
         next_state = get_agent_observation(parameters=self.parameters)
         reward, done = self.get_reward(next_state)
+
+        if getattr(self, "log_buffer", None) and len(self.log_buffer) > 0 and self.parameters.log_file is not None:
+            with open(self.parameters.log_file, "a", encoding="utf-8") as f:
+                f.writelines(self.log_buffer)
+            self.log_buffer.clear()
 
         if rl_model_type == "TD3":
             return state, next_state, reward, model_action, done
@@ -154,33 +160,18 @@ class agent(gym.Env):
         if self.W[-1] < self.We and self.ol_term5[-1] == 1:
 
             if self.parameters.log_file is not None:
-                f = open(self.parameters.log_file, "a", encoding="utf-8")
-                f.write(f"{datetime.datetime.now().strftime('%Y%m%dT%H%M%S.%f')[:-3]} Agent {self.parameters.node.get_name()} ({self.parameters.node.get_id()}) found a better, legal, wirelength target of {np.round(self.W[-1],6)}, originally {np.round(self.We,6)}.\r\n")
-                f.close()
+                self.log_buffer.append(f"{datetime.datetime.now().strftime('%Y%m%dT%H%M%S.%f')[:-3]} Agent {self.parameters.node.get_name()} ({self.parameters.node.get_id()}) found a better, legal, wirelength target of {np.round(self.W[-1],6)}, originally {np.round(self.We,6)}.\r\n")
 
             self.We = self.W[-1]
             self.parameters.node.set_opt_euclidean_distance(self.W[-1])
 
-        if self.HPWL[-1] < self.HPWLe:
-            stack = draw_board_from_board_and_graph_multi_agent(
-                self.parameters.board,
-                self.parameters.graph,
-                node_id=self.parameters.node.get_id(),
-                padding=4)
+        if self.HPWL[-1] < self.HPWLe and self.ol_term5[-1] == 1:
+            # Use overlap already computed in observation (ol_term5 == 1 means zero overlap)
+            if self.parameters.log_file is not None:
+                self.log_buffer.append(f"{datetime.datetime.now().strftime('%Y%m%dT%H%M%S.%f')[:-3]} Agent {self.parameters.node.get_name()} ({self.parameters.node.get_id()}) found a better, legal, HPWL target of {np.round(self.HPWL[-1],6)}, originally {np.round(self.HPWLe,6)}.\r\n")
 
-            stack_sum = np.zeros((stack[0].shape[0],stack[0].shape[1]),
-                                 dtype=np.int)
-            for i in range(len(stack)):
-                stack_sum += stack[i]
-
-            if np.max(stack_sum) <= 64:
-                if self.parameters.log_file is not None:
-                    f = open(self.parameters.log_file, "a", encoding="utf-8")
-                    f.write(f"{datetime.datetime.now().strftime('%Y%m%dT%H%M%S.%f')[:-3]} Agent {self.parameters.node.get_name()} ({self.parameters.node.get_id()}) found a better, legal, HPWL target of {np.round(self.HPWL[-1],6)}, originally {np.round(self.HPWLe,6)}.\r\n")
-                    f.close()
-
-                self.HPWLe = self.HPWL[-1]
-                self.parameters.node.set_opt_hpwl(self.HPWL[-1])
+            self.HPWLe = self.HPWL[-1]
+            self.parameters.node.set_opt_hpwl(self.HPWL[-1])
 
         reward = 0
 

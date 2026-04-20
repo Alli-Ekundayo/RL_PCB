@@ -67,16 +67,18 @@ def machine_info_in_paragraphs(style):
     #print(f'CPU L3 cache           : {info["l3_cache_size"]/(1024*1024)}MB')
     #print('')
     data.append(Paragraph(f'System Memory           : {np.round(psutil.virtual_memory().total / (1024**3),2)}GB',style))
-    nvmlInit()
-    data.append(Paragraph(
-        f'Nvidia driver version   : {str(nvmlSystemGetDriverVersion())}',style))
-    deviceCount = nvmlDeviceGetCount()
-    for i in range(deviceCount):
-        handle = nvmlDeviceGetHandleByIndex(i)
-        data.append(Paragraph(f'Device {i}                : {str(nvmlDeviceGetName(handle))}',style))
-        data.append(Paragraph(f'Device {i}                : {np.round(nvmlDeviceGetMemoryInfo(handle).total / 1024**3,2)}GB',style))
-
-    nvmlShutdown()
+    try:
+        nvmlInit()
+        data.append(Paragraph(
+            f'Nvidia driver version   : {str(nvmlSystemGetDriverVersion())}',style))
+        deviceCount = nvmlDeviceGetCount()
+        for i in range(deviceCount):
+            handle = nvmlDeviceGetHandleByIndex(i)
+            data.append(Paragraph(f'Device {i}                : {str(nvmlDeviceGetName(handle))}',style))
+            data.append(Paragraph(f'Device {i}                : {np.round(nvmlDeviceGetMemoryInfo(handle).total / 1024**3,2)}GB',style))
+        nvmlShutdown()
+    except Exception:
+        data.append(Paragraph('GPU                     : Not available',style))
 
     return data
 

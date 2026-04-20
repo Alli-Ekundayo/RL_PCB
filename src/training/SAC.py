@@ -1,12 +1,12 @@
 import torch
 import torch.nn.functional as F
 from torch.optim import Adam
-from utils import soft_update, hard_update, ReplayMemory
+from utils import soft_update, hard_update, ReplayMemory, create_mlp
 import time
 import numpy as np
-
+import os
 import tracker
-import gym
+import gymnasium as gym
 LOG_SIG_MAX = 2
 LOG_SIG_MIN = -20
 epsilon = 1e-6
@@ -24,44 +24,14 @@ class QNetwork(torch.nn.Module):
                  activation_fn: str = "relu"):
 
         super(QNetwork, self).__init__()
+        self.activation_fn = activation_fn
 
-        if activation_fn == "relu":
-            self.activation_fn = torch.nn.functional.relu
-        elif activation_fn == "tanh":
-            self.activation_fn = torch.nn.functional.tanh
-
-        # Q1 architecture
-        self.qf1 = torch.nn.Sequential()
-        in_size = num_inputs + num_actions
-        for layer_sz in qf:
-            self.qf1.append(torch.nn.Linear(in_size, layer_sz))
-            in_size = layer_sz
-        self.qf1.append(torch.nn.Linear(in_size, 1))
-
-		# Q2 architecture
-        self.qf2 = torch.nn.Sequential()
-        in_size = num_inputs + num_actions
-        for layer_sz in qf:
-            self.qf2.append(torch.nn.Linear(in_size, layer_sz))
-            in_size = layer_sz
-        self.qf2.append(torch.nn.Linear(in_size, 1))
-
-        # self.apply(weights_init_)
+        self.qf1 = create_mlp(num_inputs + num_actions, 1, qf, activation_fn)
+        self.qf2 = create_mlp(num_inputs + num_actions, 1, qf, activation_fn)
 
     def forward(self, state, action):
         sa = torch.cat([state, action], 1)
-
-        q1 = sa
-        for i in range(len(self.qf1)-1):
-            q1 = self.activation_fn(self.qf1[i](q1))
-        q1 = self.qf1[-1](q1)
-
-        q2 = sa
-        for i in range(len(self.qf2)-1):
-            q2 = self.activation_fn(self.qf2[i](q2))
-        q2 = self.qf2[-1](q2)
-
-        return q1, q2
+        return self.qf1(sa), self.qf2(sa)
 
 class GaussianPolicy(torch.nn.Module):
     def __init__(self,
@@ -72,6 +42,7 @@ class GaussianPolicy(torch.nn.Module):
                  action_space=None,
                  device: str = "cuda"):
         super(GaussianPolicy, self).__init__()
+        self.activation_fn = activation_fn
 
         if device == "cuda":
             self.device = torch.device(
@@ -79,19 +50,11 @@ class GaussianPolicy(torch.nn.Module):
         else:
             self.device = torch.device("cpu")
 
-        self.pi = torch.nn.Sequential()
-        in_size = num_inputs
-        for layer_sz in pi:
-            self.pi.append(torch.nn.Linear(in_size, layer_sz))
-            in_size = layer_sz
+        self.pi = create_mlp(num_inputs, None, pi, activation_fn)
+        in_size = pi[-1] if pi else num_inputs
 
         self.mean_linear = torch.nn.Linear(in_size, num_actions)
         self.log_std_linear = torch.nn.Linear(in_size, num_actions)
-
-        if activation_fn == "relu":
-            self.activation_fn = torch.nn.functional.relu
-        elif activation_fn == "tanh":
-            self.activation_fn = torch.nn.functional.tanh
 
         # action rescaling
         if action_space is None:
@@ -104,9 +67,7 @@ class GaussianPolicy(torch.nn.Module):
                 (action_space.high + action_space.low) / 2.)
 
     def forward(self, state):
-        x = state
-        for i in range(len(self.pi)):
-            x = self.activation_fn(self.pi[i](x))
+        x = self.pi(state)
         mean = self.mean_linear(x)
         log_std = self.log_std_linear(x)
         log_std = torch.clamp(log_std, min=LOG_SIG_MIN, max=LOG_SIG_MAX)
@@ -459,6 +420,7 @@ class SAC(object):
 
     # Save model parameters
     def save(self, filename):
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
         torch.save({"policy_state_dict": self.policy.state_dict(),
                     "critic_state_dict": self.critic.state_dict(),
                     "critic_target_state_dict": self.critic_target.state_dict(),
@@ -467,7 +429,7 @@ class SAC(object):
 
     # Load model parameters
     def load(self, filename):
-        checkpoint = torch.load(filename)
+        checkpoint = torch.load(filename, weights_only=True)
         self.policy.load_state_dict(checkpoint["policy_state_dict"])
         self.critic.load_state_dict(checkpoint["critic_state_dict"])
         self.critic_target.load_state_dict(
