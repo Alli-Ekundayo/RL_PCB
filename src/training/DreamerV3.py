@@ -30,7 +30,8 @@ try:
     DREAMERV3_AVAILABLE = True
 except ImportError as e:
     DREAMERV3_AVAILABLE = False
-    print(f"DreamerV3 dependencies not available: {e}")
+    # Only print this if we are actually trying to use the real DreamerV3
+    # For the SimpleWorldModel, we don't strictly need these.
 
 import torch
 import torch.nn as nn
@@ -328,7 +329,7 @@ class DreamerV3:
             print(f"Exploring for {reward_target_exploration_steps} steps...")
 
         self.done = False
-        for t in range(reward_target_exploration_steps):
+        for t in range(int(reward_target_exploration_steps)):
             obs_vec = self.train_env.step(
                 model=self.policy,
                 random=True,

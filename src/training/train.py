@@ -24,6 +24,13 @@ import sys
 import os 
 import random
 
+# Add vendored third-party libraries to path
+training_dir = os.path.dirname(os.path.abspath(__file__))
+dreamerv3_dir = os.path.join(training_dir, 'third_party', 'dreamerv3')
+if os.path.exists(dreamerv3_dir):
+    if dreamerv3_dir not in sys.path:
+        sys.path.append(dreamerv3_dir)
+
 from run_config import cmdline_args, write_desc_log
 from hyperparameters import load_hyperparameters_from_file
 from model_setup import setup_model
@@ -82,7 +89,7 @@ def training_run(settings):
                            "augment_position": True,
                            "augment_orientation": True,
                            "agent_max_action": 1,
-                           "agent_expl_noise": hp["expl_noise"],
+                           "agent_expl_noise": hp.get("expl_noise", 0.1),
                            "debug": False,
                            "max_steps": 200,
                            "w": settings["w"],
@@ -165,4 +172,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
