@@ -124,17 +124,6 @@ You can clear any compiled runtime logs or `.kicad_pcb` modifications using:
 
 Every test and experiment contains a directory called `expected results` that contains pre-generated reports. Should you run the experiments as provided, identical results are to be expected.
 
-# Google Colab Support (Cloud GPU)
-If you do not have a local GPU, you can run experiments on Google Colab using our provided Jupyter Notebooks.
-
-1. **Master Notebook**: Located at `notebooks/RL_PCB_Colab_Master.ipynb`. This is a unified notebook where you can select algorithms and hyperparameters via a UI.
-2. **Experiment Notebooks**: Every test in the `tests/` directory now includes a corresponding `.ipynb` file (e.g., `tests/09_training_dreamerv3_cpu_fast/09_training_dreamerv3_cpu_fast.ipynb`) that is pre-configured for that specific test.
-
-To use these on Colab:
-- Upload the desired `.ipynb` file to Google Colab.
-- Ensure the runtime is set to **GPU** (Runtime -> Change runtime type -> Hardware accelerator: GPU).
-- Follow the instructions in the notebook to clone the repo and build dependencies.
-
 # GPU Setup (Optional)
 This section provides an optional setup procedure to remove the Nvidia GPU driver and all dependent libraries and perform a fresh install. **The commands in this section make big changes to your system. Please read carefully before running commands** Some command changes will be required.
 

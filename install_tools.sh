@@ -70,7 +70,8 @@ update_utility_binaries() {
 	# Set compiler flags for compatibility with older CPUs (i.e., Haswell and newer)
 	# Use -march=x86-64-v3 for broader compatibility while still enabling some vectorization
 	# For maximum compatibility, use -march=x86-64 (baseline x86-64)
-	export CFLAGS="-std=c++14 -O2 -Wall -Wextra -fPIC -fpermissive -march=x86-64-v3"
+	# Added -w to suppress noisy warnings during automated builds
+	export CFLAGS="-std=c++14 -O2 -fPIC -fpermissive -march=x86-64-v3 -w"
 	export CXXFLAGS="${CFLAGS}"
 
 	printf "\n"
@@ -175,9 +176,9 @@ update_utility_binaries() {
         fi
         patch_missing_headers
         # Patch Makefile to use compatible CFLAGS
-        sed -i "s/CFLAGS = -std=c++14 -Ofast/CFLAGS = ${CFLAGS}/g" KicadParser/Makefile
-        sed -i "s/CFLAGS = -std=c++14 -O3/CFLAGS = ${CFLAGS}/g" KicadParser/pcb/Makefile
-        sed -i "s/CFLAGS = -std=c++14 -Ofast/CFLAGS = ${CFLAGS}/g" KicadParser/pcb/netlist_graph/Makefile
+        sed -i "s/CFLAGS = -std=c++14 -Ofast/CFLAGS = ${CFLAGS}/g" Makefile
+        sed -i "s/CFLAGS = -std=c++14 -O3/CFLAGS = ${CFLAGS}/g" pcb/Makefile
+        sed -i "s/CFLAGS = -std=c++14 -Ofast/CFLAGS = ${CFLAGS}/g" pcb/netlist_graph/Makefile
         make -j$(nproc)
         cp -v build/kicadParser_test ../kicadParser
         cd ..
@@ -272,6 +273,7 @@ update_utility_binaries() {
 print_help() {
     echo "  --cpu_only                  installs the cpu only version of pyTorch."
     echo "  --update_utility_binaries   cleans the git repositories then clones, builds and tests the place and route binaries."
+    echo "  --env_only                  (legacy) setup the virtual environment only."
     echo "  --skip-repository-check     skips existance checks when cloning dependent repositories for place and route tools."
     echo "  --help                      print this help and exit."
 }
@@ -283,6 +285,11 @@ while [[ $# -gt 0 ]]; do
             ;;
         --update_utility_binaries)
             UPDATE_UTILITY_BINARIES=true
+            shift
+            ;;
+        --env_only)
+            # This flag is now the default behavior if --update_utility_binaries is not used.
+            # Included for backward compatibility.
             shift
             ;;
         --skip-repository-check)

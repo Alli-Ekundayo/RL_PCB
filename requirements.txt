@@ -37,7 +37,7 @@ MarkupSafe==3.0.3
 matplotlib==3.10.8
 moviepy==2.2.1
 narwhals==2.18.1
-numpy<2.0.0
+numpy==2.4.3
 nvidia-ml-py==13.595.45
 oauthlib==3.3.1
 opencv-python==4.13.0.92
@@ -85,20 +85,3 @@ urllib3==2.6.3
 Werkzeug==3.1.7
 wheel==0.46.3
 zipp==3.23.0
-
-# DreamerV3 Dependencies
-jax
-jaxlib
-flax
-chex
-optax
-einops
-elements>=3.19.1
-jaxtyping
-ninjax>=3.5.1
-granular>=0.20.3
-scope>=0.4.4
-portal>=3.5.0
-av
-autorom[accept-rom-license]==0.6.1
-ale_py==0.9.0
