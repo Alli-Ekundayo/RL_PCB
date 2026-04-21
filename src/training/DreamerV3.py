@@ -510,12 +510,12 @@ class DreamerV3:
         # Map buffer keys to Agent keys
         # Agent expects: vector, is_first, is_last, is_terminal, reward, action, stepid, consec, seed
         data = {
-            'vector': batch['states'],
-            'action': batch['actions'],
-            'reward': batch['rewards'],
-            'is_first': batch['is_first'],
-            'is_last': batch['is_last'],
-            'is_terminal': batch['dones'],  # dones in buffer are terminal flags
+            'vector': batch['states'].astype(np.float32),
+            'action': batch['actions'].astype(np.float32),
+            'reward': batch['rewards'].astype(np.float32),
+            'is_first': batch['is_first'].astype(bool),
+            'is_last': batch['is_last'].astype(bool),
+            'is_terminal': batch['dones'].astype(bool),  # dones in buffer are terminal flags
             'stepid': np.zeros((self.train_batch_size, self.batch_length, 20), dtype=np.uint8),
             'consec': np.tile(np.arange(self.batch_length), (self.train_batch_size, 1)).astype(np.int32),
             'seed': step_seed,
