@@ -151,6 +151,7 @@ class DreamerV3:
             'random_agent': False,
             'jax': {
                 'platform': 'cpu',
+                'transfer_guard': False,
                 'compute_dtype': 'float32',  # Use float32 for CPU
                 'policy_devices': (0,),
                 'train_devices': (0,),
