@@ -11,6 +11,7 @@ import numpy as np
 import time
 import copy
 from typing import Dict, Any
+import jax
 
 # Append third-party path so dreamerv3 and embodied modules can be imported
 third_party_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "third_party"))
@@ -111,6 +112,9 @@ class DreamerV3:
         self.done = False
         self.exit = False
 
+        # JAX random seed for training
+        self.jax_seed = jax.random.PRNGKey(hyperparameters.get("seed", 0))
+
         # Training state
         self.train_carry = None
         self.should_train = False
@@ -143,7 +147,7 @@ class DreamerV3:
             'batch_size': self.train_batch_size,
             'batch_length': self.batch_length,
             'report_length': 32,
-            'replay_context': 1,
+            'replay_context': 0,
             'random_agent': False,
             'jax': {
                 'platform': 'cpu',
@@ -499,8 +503,11 @@ class DreamerV3:
         # Sample batch from replay buffer
         batch = self.replay_buffer.sample(self.train_batch_size)
 
+        # Update JAX seed
+        self.jax_seed, step_seed = jax.random.split(self.jax_seed)
+
         # Map buffer keys to Agent keys
-        # Agent expects: vector, is_first, is_last, is_terminal, reward, action, stepid, consec
+        # Agent expects: vector, is_first, is_last, is_terminal, reward, action, stepid, consec, seed
         data = {
             'vector': batch['states'],
             'action': batch['actions'],
@@ -510,6 +517,7 @@ class DreamerV3:
             'is_terminal': batch['dones'],  # dones in buffer are terminal flags
             'stepid': np.zeros((self.train_batch_size, self.batch_length, 20), dtype=np.uint8),
             'consec': np.tile(np.arange(self.batch_length), (self.train_batch_size, 1)).astype(np.int32),
+            'seed': step_seed,
         }
 
         # Initialize train carry if needed
