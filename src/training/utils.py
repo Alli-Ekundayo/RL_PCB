@@ -227,6 +227,7 @@ class SequenceReplayBuffer:
             'actions': np.array(episode['actions'], dtype=np.float32),
             'rewards': np.array(episode['rewards'], dtype=np.float32),
             'dones': np.array(episode['dones'], dtype=np.float32),
+            'next_states': np.array(episode['next_states'], dtype=np.float32),
         }
 
         self.episodes.append(episode_data)
@@ -312,7 +313,7 @@ class SequenceReplayBuffer:
 
                 state_seq = episode['states'][start_idx:end_idx]
                 action_seq = episode['actions'][start_idx:end_idx]
-                next_state_seq = episode['states'][start_idx + 1:end_idx + 1]
+                next_state_seq = episode['next_states'][start_idx:end_idx]
                 reward_seq = episode['rewards'][start_idx:end_idx]
                 done_seq = episode['dones'][start_idx:end_idx]
 
@@ -398,6 +399,7 @@ class EpisodeBuffer:
             'actions': np.array(self.actions, dtype=np.float32),
             'rewards': np.array(self.rewards, dtype=np.float32),
             'dones': np.array(self.dones, dtype=np.float32),
+            'next_states': np.array(self.next_states, dtype=np.float32),
         }
 
     def __len__(self):
